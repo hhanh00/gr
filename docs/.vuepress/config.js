@@ -8,7 +8,7 @@ export default {
   lang: 'en-US',
   title: 'General Relativity',
   description: 'A documentation site about General Relativity',
-  base: '/gr/',
+  base: '/',
 
   bundler: viteBundler(),
 
