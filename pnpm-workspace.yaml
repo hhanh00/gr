@@ -1,0 +1,14 @@
+allowBuilds:
+  '@parcel/watcher': false
+overrides:
+  '@mdit/helper': 1.1.0
+  '@mdit/plugin-alert': 1.0.3
+  '@mdit/plugin-container': 1.0.2
+  '@mdit/plugin-katex-slim': 1.1.0
+  '@mdit/plugin-mathjax-slim': 1.2.0
+  '@mdit/plugin-tab': 1.0.4
+  '@mdit/plugin-tex': 1.1.0
+
+peerDependencyRules:
+  allowedVersions:
+    markdown-it: '>=14.0.0 <16.0.0'
