@@ -3,6 +3,7 @@ import { viteBundler } from '@vuepress/bundler-vite'
 import { markdownMathPlugin } from '@vuepress/plugin-markdown-math'
 import { slimsearchPlugin } from '@vuepress/plugin-slimsearch'
 import markdownItFootnote from 'markdown-it-footnote'
+import { groups } from './curriculum.js'
 
 export default {
   lang: 'en-US',
@@ -15,12 +16,26 @@ export default {
   theme: defaultTheme({
     navbar: [
       { text: 'Home', link: '/' },
+      ...groups.map(group => ({
+        text: group.name,
+        children: group.items.map(item => ({ text: item.title, link: item.link })),
+      })),
     ],
-    sidebar: [],
+    // Keep the ten main chapters together for previous/next navigation.
+    sidebar: [
+      ...groups.slice(0, 3).flatMap(group => group.items.map(item => ({
+        text: `${item.number}. ${item.title}`, link: item.link,
+      }))),
+      {
+        text: 'Supporting Chapters',
+        children: groups[3].items.map(item => ({ text: item.title, link: item.link })),
+      },
+    ],
   }),
 
   plugins: [
-    markdownMathPlugin({ type: 'mathjax', output: 'svg' }),
+    // Match Phyz and render mathematics without asynchronous MathJax font loading.
+    markdownMathPlugin({ type: 'katex', output: 'html' }),
     slimsearchPlugin({
       indexContent: true,
       suggestion: false,

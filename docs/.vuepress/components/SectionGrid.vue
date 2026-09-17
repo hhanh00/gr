@@ -1,66 +1,5 @@
 <script setup>
-const groups = [
-  {
-    number: '01',
-    name: 'Foundations',
-    desc: 'Build the mathematical and physical language needed for curved spacetime.',
-    color: '#2563eb',
-    soft: '#dbeafe',
-    items: [
-      { number: '01', title: 'Spacetime', desc: 'Describe events, intervals, light cones, and causality.', symbol: 'x^\u03bc' },
-      { number: '02', title: 'Vectors and tensors', desc: 'Learn the objects that make physical laws coordinate-independent.', symbol: 'T^\u03bc\u03bd' },
-      { number: '03', title: 'Curves and motion', desc: 'Move from ordinary trajectories to geometric paths through spacetime.', symbol: '\u03b3(\u03bb)' },
-    ],
-  },
-  {
-    number: '02',
-    name: 'Differential geometry',
-    desc: 'Turn curved spaces into a precise language for physics.',
-    color: '#7c3aed',
-    soft: '#ede9fe',
-    items: [
-      { number: '04', title: 'Manifolds', desc: 'Describe spaces locally with coordinates and globally with charts.', symbol: 'M' },
-      { number: '05', title: 'Metrics', desc: 'Measure distances, times, angles, and causal structure geometrically.', symbol: 'g\u03bc\u03bd' },
-      { number: '06', title: 'Connections and curvature', desc: 'Compare vectors at different points and measure geometric bending.', symbol: '\u2207, R' },
-    ],
-  },
-  {
-    number: '03',
-    name: 'General relativity',
-    desc: 'Build Einstein’s theory from the equivalence principle and an action.',
-    color: '#059669',
-    soft: '#d1fae5',
-    items: [
-      { number: '07', title: 'The equivalence principle', desc: 'Understand why gravity can be described as spacetime geometry.', symbol: 'g' },
-      { number: '08', title: 'Einstein equations', desc: 'Relate spacetime curvature to matter and energy.', symbol: 'G\u03bc\u03bd' },
-      { number: '09', title: 'Geodesics', desc: 'Derive free fall as extremal motion in curved spacetime.', symbol: '\u03b4S = 0' },
-    ],
-  },
-  {
-    number: '04',
-    name: 'Spacetime solutions',
-    desc: 'Explore the geometries that describe stars, black holes, and the universe.',
-    color: '#d97706',
-    soft: '#fef3c7',
-    items: [
-      { number: '10', title: 'Schwarzschild spacetime', desc: 'Study the geometry outside a spherical, non-rotating body.', symbol: 'r\u209b' },
-      { number: '11', title: 'Black holes', desc: 'Understand horizons, singularities, and causal structure.', symbol: '\u0394t' },
-      { number: '12', title: 'Cosmology', desc: 'Apply Einstein’s equations to an expanding homogeneous universe.', symbol: 'a(t)' },
-    ],
-  },
-  {
-    number: '05',
-    name: 'Gravitational phenomena',
-    desc: 'Connect the geometry to observable effects and experiments.',
-    color: '#db2777',
-    soft: '#fce7f3',
-    items: [
-      { number: '13', title: 'Gravitational waves', desc: 'Describe propagating distortions of spacetime and their detection.', symbol: 'h\u03bc\u03bd' },
-      { number: '14', title: 'Lensing and redshift', desc: 'Calculate how gravity bends light and changes observed frequencies.', symbol: 'z' },
-      { number: '15', title: 'Tests of relativity', desc: 'Compare geometric predictions with measurements in the solar system.', symbol: '\u0394\u03c4' },
-    ],
-  },
-]
+import { groups } from '../curriculum.js'
 </script>
 
 <template>
@@ -74,8 +13,8 @@ const groups = [
           gravitational waves, and the expanding universe.
         </p>
         <div class="hero-actions">
-          <span class="start-button">Coming soon</span>
-          <span class="chapter-count"><strong>{{ groups.length }}</strong> stages</span>
+          <a class="start-button" href="/equivalence-principle.html">Start reading →</a>
+          <span class="chapter-count"><strong>10</strong> main chapters</span>
         </div>
       </div>
 
@@ -108,7 +47,7 @@ const groups = [
           <p class="section-label">Contents</p>
           <h2 id="curriculum-title">The route through GR</h2>
         </div>
-        <p>Chapters will be added in this order.</p>
+        <p>Follow the ten main chapters in order, with supporting material available along the way.</p>
       </div>
 
       <div class="stages">
@@ -126,15 +65,15 @@ const groups = [
             <p class="stage-desc">{{ group.desc }}</p>
           </header>
           <div class="cards">
-            <div v-for="item in group.items" :key="item.number" class="chapter-card">
+            <a v-for="item in group.items" :key="item.number" :href="item.link" class="chapter-card">
               <div class="card-topline">
                 <span class="chapter-number">Chapter {{ item.number }}</span>
                 <span class="chapter-symbol">{{ item.symbol }}</span>
               </div>
               <h4>{{ item.title }}</h4>
               <p>{{ item.desc }}</p>
-              <span class="read-link">Coming soon</span>
-            </div>
+              <span class="read-link">Read chapter →</span>
+            </a>
           </div>
         </section>
       </div>
@@ -178,9 +117,15 @@ const groups = [
 .stage-marker { display: grid; place-items: center; width: 2.7rem; height: 2.7rem; border-radius: 50%; color: var(--accent); background: var(--accent-soft); font-size: .72rem; font-weight: 750; }
 .stage-head > p:first-child { margin: .15rem 0 .45rem; color: var(--accent); font-size: .7rem; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
 .stage-head h3 { margin: 0; font-size: 1.55rem; letter-spacing: -.035em; } .stage-rule { width: 3rem; height: 3px; margin: 1rem 0; background: var(--accent); } .stage-desc { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.55; }
-.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: .85rem; } .chapter-card { min-height: 190px; padding: 1.15rem; border: 1px solid #dfe5ec; border-radius: 10px; background: #fff; box-shadow: 0 8px 24px rgba(21, 34, 56, .04); }
+.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: .85rem; } .chapter-card { display: block; color: inherit; text-decoration: none; min-height: 190px; padding: 1.15rem; border: 1px solid #dfe5ec; border-radius: 10px; background: #fff; box-shadow: 0 8px 24px rgba(21, 34, 56, .04); }
 .card-topline { display: flex; justify-content: space-between; gap: .6rem; color: #8290a1; font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; } .chapter-symbol { color: var(--accent); font-family: Georgia, serif; font-size: .9rem; text-transform: none; }
 .chapter-card h4 { margin: 1.4rem 0 .55rem; font-size: 1.05rem; } .chapter-card p { margin: 0; color: var(--muted); font-size: .86rem; line-height: 1.55; } .read-link { display: block; margin-top: 1.2rem; color: var(--accent); font-size: .76rem; font-weight: 700; }
 @media (max-width: 900px) { .home-hero { grid-template-columns: 1fr; } .field-visual { width: min(100%, 520px); } .stage { grid-template-columns: 3.5rem 1fr; } .cards { grid-column: 2; grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 600px) { .home-hero { min-height: auto; padding-top: 3.5rem; } .field-visual { width: 100%; } .curriculum-intro { display: block; } .curriculum-intro > p { margin-top: 1rem; } .stage { grid-template-columns: 2.7rem 1fr; gap: .9rem; } .cards { grid-column: 1 / -1; grid-template-columns: 1fr; } }
+</style>
+
+<style>
+.chapter-card:hover, .chapter-card:focus-visible { border-color: var(--accent); text-decoration: none; }
+.chapter-card:focus-visible, .start-button:focus-visible { outline: 3px solid #2563eb; outline-offset: 4px; }
+.start-button:hover { color: #fff; text-decoration: none; }
 </style>
