@@ -10,6 +10,9 @@ export default {
   title: 'General Relativity',
   description: 'A documentation site about General Relativity',
   base: '/',
+  head: [
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+  ],
 
   bundler: viteBundler(),
 

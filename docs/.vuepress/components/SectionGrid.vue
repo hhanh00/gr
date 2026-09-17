@@ -1,5 +1,7 @@
 <script setup>
 import { groups } from '../curriculum.js'
+
+const mainChapterCount = groups.slice(0, 3).reduce((count, group) => count + group.items.length, 0)
 </script>
 
 <template>
@@ -7,14 +9,17 @@ import { groups } from '../curriculum.js'
     <section class="home-hero" aria-labelledby="home-title">
       <div class="hero-copy">
         <p class="kicker"><span class="kicker-dot"></span>General Relativity</p>
-        <h1 id="home-title">Spacetime, explained step by step</h1>
+        <h1 id="home-title">General relativity notes</h1>
         <p class="hero-text">
-          Build the geometry first, then use it to understand gravity, black holes,
-          gravitational waves, and the expanding universe.
+          Work through general relativity one step at a time, starting with free
+          fall. Each chapter explains the ideas and equations used in the next.
         </p>
         <div class="hero-actions">
-          <a class="start-button" href="/equivalence-principle.html">Start reading →</a>
-          <span class="chapter-count"><strong>10</strong> main chapters</span>
+          <a class="start-button" href="/equivalence-principle.html">
+            Start reading
+            <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" /></svg>
+          </a>
+          <span class="chapter-count"><strong>{{ mainChapterCount }}</strong> main chapters</span>
         </div>
       </div>
 
@@ -35,7 +40,7 @@ import { groups } from '../curriculum.js'
         <span class="particle particle-b"></span>
         <span class="particle particle-c"></span>
         <div class="formula formula-a">ds² = gμν dxμ dxν</div>
-        <div class="formula formula-b">Gμν = 8πTμν</div>
+        <div class="formula formula-b">Rμν = 0</div>
         <div class="axis-label axis-x">space</div>
         <div class="axis-label axis-t">time</div>
       </div>
@@ -45,34 +50,47 @@ import { groups } from '../curriculum.js'
       <div class="curriculum-intro">
         <div>
           <p class="section-label">Contents</p>
-          <h2 id="curriculum-title">The route through GR</h2>
+          <h2 id="curriculum-title">Chapters</h2>
         </div>
-        <p>Follow the ten main chapters in order, with supporting material available along the way.</p>
+        <p>Read in order, or jump directly to the idea you need.</p>
       </div>
 
       <div class="stages">
         <section
-          v-for="group in groups"
-          :key="group.name"
+          v-for="g in groups"
+          :key="g.name"
           class="stage"
-          :style="{ '--accent': group.color, '--accent-soft': group.soft }"
+          :style="{ '--accent': g.color, '--accent-soft': g.soft }"
         >
-          <div class="stage-marker" aria-hidden="true"><span>{{ group.number }}</span></div>
+          <div class="stage-marker" aria-hidden="true">
+            <span>{{ g.number }}</span>
+          </div>
+
           <header class="stage-head">
-            <p>{{ group.items.length }} chapters</p>
-            <h3>{{ group.name }}</h3>
+            <p>{{ g.items.length }} {{ g.items.length === 1 ? 'chapter' : 'chapters' }}</p>
+            <h3>{{ g.name }}</h3>
             <div class="stage-rule"></div>
-            <p class="stage-desc">{{ group.desc }}</p>
+            <p class="stage-desc">{{ g.desc }}</p>
           </header>
-          <div class="cards">
-            <a v-for="item in group.items" :key="item.number" :href="item.link" class="chapter-card">
+
+          <div class="cards" :class="{ 'cards-single': g.items.length === 1 }">
+            <a
+              v-for="s in g.items"
+              :key="s.link"
+              class="chapter-card"
+              :class="{ 'final-card': s.final }"
+              :href="s.link"
+            >
               <div class="card-topline">
-                <span class="chapter-number">Chapter {{ item.number }}</span>
-                <span class="chapter-symbol">{{ item.symbol }}</span>
+                <span class="chapter-number">{{ s.number.startsWith('S') ? 'Supporting ' + s.number.slice(1) : 'Chapter ' + s.number }}</span>
+                <span class="chapter-symbol">{{ s.symbol }}</span>
               </div>
-              <h4>{{ item.title }}</h4>
-              <p>{{ item.desc }}</p>
-              <span class="read-link">Read chapter →</span>
+              <h4>{{ s.title }}</h4>
+              <p>{{ s.desc }}</p>
+              <span class="read-link">
+                Read chapter
+                <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" /></svg>
+              </span>
             </a>
           </div>
         </section>
@@ -86,8 +104,26 @@ import { groups } from '../curriculum.js'
 .vp-home { padding: 0; max-width: none; }
 .vp-home [vp-content] { max-width: none; padding: 0; }
 .vp-home [vp-content] > div { max-width: none; }
-.gr-home { --ink: #152238; --muted: #5f6b7c; color: var(--ink); overflow: hidden; }
-.home-hero { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) minmax(380px, .9fr); align-items: center; gap: clamp(2rem, 6vw, 6.5rem); max-width: 1280px; min-height: 560px; margin: 0 auto; padding: clamp(4.5rem, 8vw, 7.5rem) clamp(2rem, 6vw, 5.5rem) 4.5rem; }
+
+.gr-home {
+  --ink: #152238;
+  --muted: #5f6b7c;
+  --paper: #fbfcfe;
+  --line: #dfe5ec;
+  color: var(--ink);
+  overflow: hidden;
+}
+.home-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(380px, .9fr);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 6.5rem);
+  max-width: 1280px;
+  min-height: 560px;
+  margin: 0 auto;
+  padding: clamp(4.5rem, 8vw, 7.5rem) clamp(2rem, 6vw, 5.5rem) 4.5rem;
+}
 .hero-copy { position: relative; z-index: 2; }
 .kicker, .section-label { margin: 0; color: #2563eb; font-size: .73rem; font-weight: 750; letter-spacing: .14em; text-transform: uppercase; }
 .kicker { display: flex; align-items: center; gap: .6rem; }
@@ -95,7 +131,10 @@ import { groups } from '../curriculum.js'
 .home-hero h1 { max-width: 40rem; margin: 1.25rem 0 1.35rem; color: var(--ink); font-size: clamp(3.1rem, 6vw, 5.3rem); font-weight: 700; letter-spacing: -.055em; line-height: .98; }
 .hero-text { max-width: 35rem; margin: 0; color: var(--muted); font-size: clamp(1.05rem, 1.7vw, 1.3rem); line-height: 1.65; }
 .hero-actions { display: flex; align-items: center; gap: 1.5rem; margin-top: 2rem; }
-.start-button { display: inline-flex; align-items: center; padding: .85rem 1.1rem; border-radius: 8px; color: #fff; background: #152238; font-size: .9rem; font-weight: 650; box-shadow: 0 9px 24px rgba(21, 34, 56, .16); }
+.start-button { display: inline-flex; align-items: center; gap: .7rem; padding: .85rem 1.1rem; border-radius: 8px; color: #fff !important; background: #152238; font-size: .9rem; font-weight: 650; text-decoration: none !important; box-shadow: 0 9px 24px rgba(21, 34, 56, .16); transition: transform .2s ease, background .2s ease, box-shadow .2s ease; }
+.start-button:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 12px 30px rgba(37, 99, 235, .2); }
+.start-button:focus-visible, .chapter-card:focus-visible { outline: 3px solid #60a5fa; outline-offset: 4px; }
+.start-button svg, .read-link svg { width: 18px; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .chapter-count { color: var(--muted); font-size: .84rem; }
 .chapter-count strong { color: var(--ink); font-family: Georgia, serif; font-size: 1.2rem; }
 .field-visual { position: relative; width: min(100%, 500px); aspect-ratio: 1.18; justify-self: center; border: 1px solid rgba(37, 99, 235, .18); border-radius: 50% 50% 48% 52% / 43% 55% 45% 57%; background: radial-gradient(circle at 50% 50%, rgba(37, 99, 235, .1), transparent 24%), linear-gradient(145deg, rgba(219, 234, 254, .7), rgba(238, 242, 255, .2)); transform: rotate(-2deg); }
@@ -106,26 +145,76 @@ import { groups } from '../curriculum.js'
 .visual-core span { margin-top: .55rem; color: #2563eb; font-family: Georgia, serif; font-size: 2.4rem; font-style: italic; line-height: 1; }
 .visual-core small { align-self: start; color: var(--muted); font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; }
 .particle { position: absolute; width: 10px; height: 10px; border: 3px solid #fff; border-radius: 50%; background: #7c3aed; box-shadow: 0 3px 12px rgba(124, 58, 237, .4); }
-.particle-a { top: 24%; left: 18%; } .particle-b { right: 14%; bottom: 29%; background: #059669; } .particle-c { right: 20%; top: 20%; width: 7px; height: 7px; background: #d97706; }
-.formula { position: absolute; color: #5f6b7c; font-family: Georgia, serif; font-size: .9rem; font-style: italic; white-space: nowrap; }
-.formula-a { top: 12%; right: 8%; } .formula-b { bottom: 13%; left: 7%; }
-.axis-label { position: absolute; color: #7c3aed; font-size: .62rem; letter-spacing: .13em; text-transform: uppercase; } .axis-x { right: 9%; bottom: 12%; } .axis-t { top: 11%; left: 10%; }
-.curriculum { max-width: 1280px; margin: 0 auto; padding: 1rem clamp(2rem, 6vw, 5.5rem) 6rem; }
-.curriculum-intro { display: flex; justify-content: space-between; align-items: end; gap: 2rem; padding: 2rem 0 2.5rem; border-top: 1px solid #dfe5ec; }
-.curriculum-intro h2 { margin: .45rem 0 0; font-size: clamp(2rem, 4vw, 3.25rem); letter-spacing: -.045em; } .curriculum-intro > p { max-width: 20rem; margin: 0; color: var(--muted); line-height: 1.6; }
-.stage { position: relative; display: grid; grid-template-columns: 4rem minmax(170px, .28fr) 1fr; gap: 1.4rem; padding: 2.5rem 0; border-top: 1px solid #dfe5ec; }
-.stage-marker { display: grid; place-items: center; width: 2.7rem; height: 2.7rem; border-radius: 50%; color: var(--accent); background: var(--accent-soft); font-size: .72rem; font-weight: 750; }
-.stage-head > p:first-child { margin: .15rem 0 .45rem; color: var(--accent); font-size: .7rem; font-weight: 750; letter-spacing: .12em; text-transform: uppercase; }
-.stage-head h3 { margin: 0; font-size: 1.55rem; letter-spacing: -.035em; } .stage-rule { width: 3rem; height: 3px; margin: 1rem 0; background: var(--accent); } .stage-desc { margin: 0; color: var(--muted); font-size: .9rem; line-height: 1.55; }
-.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: .85rem; } .chapter-card { display: block; color: inherit; text-decoration: none; min-height: 190px; padding: 1.15rem; border: 1px solid #dfe5ec; border-radius: 10px; background: #fff; box-shadow: 0 8px 24px rgba(21, 34, 56, .04); }
-.card-topline { display: flex; justify-content: space-between; gap: .6rem; color: #8290a1; font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; } .chapter-symbol { color: var(--accent); font-family: Georgia, serif; font-size: .9rem; text-transform: none; }
-.chapter-card h4 { margin: 1.4rem 0 .55rem; font-size: 1.05rem; } .chapter-card p { margin: 0; color: var(--muted); font-size: .86rem; line-height: 1.55; } .read-link { display: block; margin-top: 1.2rem; color: var(--accent); font-size: .76rem; font-weight: 700; }
-@media (max-width: 900px) { .home-hero { grid-template-columns: 1fr; } .field-visual { width: min(100%, 520px); } .stage { grid-template-columns: 3.5rem 1fr; } .cards { grid-column: 2; grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px) { .home-hero { min-height: auto; padding-top: 3.5rem; } .field-visual { width: 100%; } .curriculum-intro { display: block; } .curriculum-intro > p { margin-top: 1rem; } .stage { grid-template-columns: 2.7rem 1fr; gap: .9rem; } .cards { grid-column: 1 / -1; grid-template-columns: 1fr; } }
-</style>
-
-<style>
-.chapter-card:hover, .chapter-card:focus-visible { border-color: var(--accent); text-decoration: none; }
-.chapter-card:focus-visible, .start-button:focus-visible { outline: 3px solid #2563eb; outline-offset: 4px; }
-.start-button:hover { color: #fff; text-decoration: none; }
+.particle-a { top: 24%; left: 18%; }
+.particle-b { right: 14%; bottom: 29%; background: #059669; box-shadow: 0 3px 12px rgba(5, 150, 105, .4); }
+.particle-c { right: 20%; top: 20%; width: 7px; height: 7px; background: #d97706; }
+.formula { position: absolute; padding: .45rem .7rem; border: 1px solid rgba(21, 34, 56, .1); border-radius: 6px; color: var(--ink); background: rgba(255, 255, 255, .82); font-family: Georgia, serif; font-size: .82rem; box-shadow: 0 8px 22px rgba(21, 34, 56, .08); backdrop-filter: blur(8px); }
+.formula-a { top: 10%; right: 9%; }
+.formula-b { bottom: 11%; left: 8%; }
+.axis-label { position: absolute; color: #8290a3; font-size: .6rem; letter-spacing: .12em; text-transform: uppercase; }
+.axis-x { right: 5%; top: 51%; }
+.axis-t { left: 51%; top: 4%; writing-mode: vertical-rl; }
+.curriculum { max-width: 1280px; margin: 0 auto; padding: 4.5rem clamp(2rem, 6vw, 5.5rem) 5rem; border-top: 1px solid var(--line); }
+.curriculum-intro { display: flex; align-items: end; justify-content: space-between; gap: 3rem; padding-bottom: 2.5rem; }
+.curriculum-intro h2 { margin: .4rem 0 0; color: var(--ink); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; letter-spacing: -.035em; }
+.curriculum-intro > p { max-width: 20rem; margin: 0 0 .35rem; color: var(--muted); font-size: .9rem; line-height: 1.55; }
+.stages { position: relative; }
+.stages::before { content: ''; position: absolute; top: 1.6rem; bottom: 1.6rem; left: 25px; width: 1px; background: var(--line); }
+.stage { position: relative; display: grid; grid-template-columns: 52px minmax(180px, .72fr) minmax(0, 2.2fr); gap: clamp(1.25rem, 3vw, 3.5rem); padding: 2.8rem 0; border-top: 1px solid var(--line); }
+.stage:last-child { border-bottom: 1px solid var(--line); }
+.stage-marker { position: relative; z-index: 1; padding-top: .1rem; }
+.stage-marker span { display: grid; place-items: center; width: 51px; height: 51px; border: 1px solid color-mix(in srgb, var(--accent) 35%, white); border-radius: 50%; color: var(--accent); background: var(--paper); font-family: Georgia, serif; font-size: .9rem; font-weight: 700; }
+.stage-head > p:first-child { margin: .1rem 0 .45rem; color: var(--accent); font-size: .65rem; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
+.stage-head h3 { margin: 0; border: 0; color: var(--ink); font-size: 1.45rem; font-weight: 700; letter-spacing: -.025em; }
+.stage-rule { width: 2rem; height: 2px; margin: 1.1rem 0; background: var(--accent); }
+.stage-desc { max-width: 15rem; margin: 0; color: var(--muted); font-size: .82rem; line-height: 1.6; }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; }
+.chapter-card { position: relative; display: flex; min-height: 230px; flex-direction: column; padding: 1.15rem; border: 1px solid var(--line); border-radius: 10px; color: inherit !important; background: #fff; text-decoration: none !important; box-shadow: 0 1px 0 rgba(21, 34, 56, .02); transition: border-color .2s ease, box-shadow .2s ease, transform .2s ease; }
+.chapter-card::before { content: ''; position: absolute; inset: 0 0 auto; height: 3px; border-radius: 10px 10px 0 0; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
+.chapter-card:hover { border-color: color-mix(in srgb, var(--accent) 45%, white); box-shadow: 0 14px 36px rgba(21, 34, 56, .09); transform: translateY(-4px); }
+.chapter-card:hover::before { transform: scaleX(1); }
+.card-topline { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.chapter-number { color: #8a94a3; font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.chapter-symbol { display: grid; place-items: center; min-width: 38px; height: 30px; padding: 0 .35rem; border-radius: 6px; color: var(--accent); background: var(--accent-soft); font-family: Georgia, serif; font-size: .76rem; font-style: italic; }
+.chapter-card h4 { margin: 1.5rem 0 .65rem; color: var(--ink); font-size: 1.05rem; font-weight: 700; letter-spacing: -.015em; line-height: 1.2; }
+.chapter-card > p { margin: 0; color: var(--muted); font-size: .78rem; line-height: 1.55; }
+.read-link { display: flex; align-items: center; gap: .4rem; margin-top: auto; padding-top: 1.1rem; color: var(--accent); font-size: .72rem; font-weight: 700; }
+.read-link svg { width: 15px; transition: transform .2s ease; }
+.chapter-card:hover .read-link svg { transform: translateX(3px); }
+.cards-single { grid-template-columns: minmax(240px, 1fr) 2fr; }
+.final-card { min-height: 200px; background: linear-gradient(135deg, #fff, color-mix(in srgb, var(--accent-soft) 52%, white)); }
+@media (max-width: 960px) {
+  .home-hero { grid-template-columns: 1fr minmax(310px, .75fr); min-height: 500px; gap: 2rem; }
+  .stage { grid-template-columns: 52px 1fr; }
+  .cards { grid-column: 2; }
+  .stage-desc { max-width: 30rem; }
+}
+@media (max-width: 720px) {
+  .home-hero { grid-template-columns: 1fr; min-height: 0; padding-top: 4.5rem; }
+  .field-visual { width: min(100%, 430px); margin-top: 1rem; }
+  .curriculum { padding-top: 4.5rem; }
+  .curriculum-intro { display: block; }
+  .curriculum-intro > p { margin-top: 1rem; }
+  .cards { grid-template-columns: 1fr; }
+  .cards-single { grid-template-columns: 1fr; }
+  .chapter-card { min-height: 190px; }
+}
+@media (max-width: 480px) {
+  .home-hero, .curriculum { padding-inline: 1.25rem; }
+  .home-hero h1 { font-size: 3.25rem; }
+  .hero-actions { align-items: flex-start; flex-direction: column; gap: 1rem; }
+  .field-visual { width: 108%; margin-left: -4%; }
+  .stage { grid-template-columns: 40px 1fr; gap: 1rem; }
+  .stages::before { left: 19px; }
+  .stage-marker span { width: 39px; height: 39px; font-size: .72rem; }
+  .cards { grid-column: 1 / -1; }
+}
+[data-theme='dark'] .gr-home { --ink: #edf3fb; --muted: #aab6c6; --paper: #1b1b1f; --line: #343b47; }
+[data-theme='dark'] .field-visual { background: radial-gradient(circle at 50% 50%, rgba(96, 165, 250, .13), transparent 24%), linear-gradient(145deg, rgba(30, 58, 138, .25), rgba(30, 41, 59, .08)); }
+[data-theme='dark'] .visual-core, [data-theme='dark'] .formula { background: rgba(27, 27, 31, .82); }
+[data-theme='dark'] .chapter-card { background: #202126; }
+[data-theme='dark'] .final-card { background: linear-gradient(135deg, #202126, rgba(120, 75, 10, .14)); }
+@media (prefers-reduced-motion: reduce) {
+  .start-button, .chapter-card, .chapter-card::before, .read-link svg { transition: none; }
+}
 </style>
