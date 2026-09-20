@@ -1,5 +1,6 @@
 from manim import *
 import numpy as np
+from diagram_text import Text
 
 
 class LightBendingInLift(Scene):

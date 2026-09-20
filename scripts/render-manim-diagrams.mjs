@@ -1,55 +1,140 @@
 import { spawnSync } from 'node:child_process'
 import fs from 'node:fs'
+import os from 'node:os'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
 const manimDir = path.join(root, 'docs', 'manim')
-const args = process.argv.slice(2)
-
-if (args.length !== 6 || args[0] !== '--file' || args[2] !== '--scene' || args[4] !== '--output') {
-  console.error('Usage: pnpm docs:manim -- --file <scene.py> --scene <SceneName> --output <image.png>')
-  process.exit(1)
-}
-
-const source = path.resolve(root, args[1])
-const scene = args[3]
-const output = path.resolve(manimDir, args[5])
 const manim = path.join(root, '.manim-venv', 'bin', 'manim')
 
-if (!fs.existsSync(source)) {
-  console.error('Manim source not found: ' + source)
+const diagrams = [
+  {
+    source: 'tidal_convergence.py',
+    scene: 'TidalConvergence',
+    output: 'tidal-convergence.png',
+    page: 'equivalence-principle',
+  },
+  {
+    source: 'light_bending_in_lift.py',
+    scene: 'LightBendingInLift',
+    output: 'light-bending-in-lift.png',
+    page: 'equivalence-principle',
+  },
+  {
+    source: 'intrinsic_flatness.py',
+    scene: 'IntrinsicFlatness',
+    output: 'intrinsic-flatness.png',
+    page: 'tensors-and-tensor-fields',
+  },
+  {
+    source: 'parallel_transport_sphere.py',
+    scene: 'ParallelTransportSphere',
+    output: 'parallel-transport-sphere.png',
+    page: 'tensors-and-tensor-fields',
+  },
+  {
+    source: 'tangent_spaces.py',
+    scene: 'TangentSpaces',
+    output: 'tangent-spaces.png',
+    page: 'tensors-and-tensor-fields',
+  },
+  {
+    source: 'contravariant_rescaling.py',
+    scene: 'ContravariantRescaling',
+    output: 'contravariant-rescaling.png',
+    page: 'tensors-and-tensor-fields',
+  },
+  {
+    source: 'gradient_form.py',
+    scene: 'GradientForm',
+    output: 'gradient-form.png',
+    page: 'tensors-and-tensor-fields',
+  },
+  {
+    source: 'gradient_curved_surface.py',
+    scene: 'GradientCurvedSurface',
+    output: 'gradient-curved-surface.png',
+    page: 'tensors-and-tensor-fields',
+  },
+  {
+    source: 'one_form_measuring_tape.py',
+    scene: 'OneFormMeasuringTape',
+    output: 'one-form-measuring-tape.png',
+    page: 'tensors-and-tensor-fields',
+  },
+  {
+    source: 'covariant_measuring_tape.py',
+    scene: 'CovariantMeasuringTape',
+    output: 'covariant-measuring-tape.png',
+    page: 'tensors-and-tensor-fields',
+  },
+]
+
+const args = process.argv.slice(2)
+if (args.length && (args.length !== 2 || args[0] !== '--page')) {
+  console.error('Usage: pnpm docs:manim [--page <chapter-slug>]')
   process.exit(1)
 }
+
+const selected = args.length ? diagrams.filter((diagram) => diagram.page === args[1]) : diagrams
+if (!selected.length) {
+  console.error(`No diagrams registered for page: ${args[1]}`)
+  process.exit(1)
+}
+
 if (!fs.existsSync(manim)) {
-  console.error('Manim not found at ' + manim)
-  console.error('Create it with: uv venv .manim-venv && uv pip install --python .manim-venv/bin/python manim')
+  console.error(`Manim not found at ${manim}`)
+  console.error('Create it with: uv venv .manim-venv --python 3.14 && uv pip install --python .manim-venv/bin/python manim')
   process.exit(1)
 }
 
-const mediaDir = fs.mkdtempSync(path.join(root, '.manim-media-'))
-const result = spawnSync(
-  manim,
-  ['render', '-s', '--media_dir', mediaDir, '-r', '2400,1350', '-q', 'm', source, scene],
-  { cwd: root, stdio: 'inherit' },
-)
+const mediaDir = fs.mkdtempSync(path.join(os.tmpdir(), 'gr-manim-'))
+let renderedCount = 0
+let failedCount = 0
 
-if (result.status !== 0) {
-  fs.rmSync(mediaDir, { recursive: true, force: true })
-  process.exit(result.status ?? 1)
+for (const { source, scene, output } of selected) {
+  const result = spawnSync(
+    manim,
+    [
+      'render',
+      '-s',
+      '--tex_template',
+      path.join(manimDir, 'template.tex'),
+      '--media_dir',
+      mediaDir,
+      '-r',
+      '2400,1350',
+      '-q',
+      'm',
+      path.join('docs', 'manim', source),
+      scene,
+    ],
+    { cwd: root, stdio: 'pipe', encoding: 'utf8' },
+  )
+
+  if (result.status !== 0) {
+    failedCount++
+    console.error(`FAIL ${source}\n${result.stderr || result.stdout}`)
+    continue
+  }
+
+  const imagesDir = path.join(mediaDir, 'images', path.basename(source, '.py'))
+  const rendered = fs.readdirSync(imagesDir).find(
+    (file) => file.startsWith(`${scene}_ManimCE_v`) && file.endsWith('.png'),
+  )
+  if (!rendered) {
+    failedCount++
+    console.error(`FAIL ${source}: no rendered PNG found in ${imagesDir}`)
+    continue
+  }
+
+  fs.copyFileSync(path.join(imagesDir, rendered), path.join(manimDir, output))
+  renderedCount++
+  console.log(`ok   ${source} -> docs/manim/${output}`)
 }
 
-const sceneDir = path.join(mediaDir, 'images', path.basename(source, '.py'))
-const rendered = fs.readdirSync(sceneDir).find(
-  (file) => file.startsWith(scene + '_ManimCE_v') && file.endsWith('.png'),
-)
-if (!rendered) {
-  console.error('No rendered PNG found in ' + sceneDir)
-  fs.rmSync(mediaDir, { recursive: true, force: true })
-  process.exit(1)
-}
-
-fs.mkdirSync(path.dirname(output), { recursive: true })
-fs.copyFileSync(path.join(sceneDir, rendered), output)
 fs.rmSync(mediaDir, { recursive: true, force: true })
-console.log('Rendered ' + output)
+console.log(`\n${renderedCount} diagram(s) rendered, ${failedCount} failed.`)
+
+if (failedCount > 0) process.exitCode = 1
