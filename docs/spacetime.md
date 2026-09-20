@@ -57,4 +57,4 @@ In a diagram with $ct$ vertical and $x$ horizontal, light rays satisfy $x=\pm ct
 
 Observers can reverse the coordinate-time order of spacelike-separated events. They cannot reverse the causal order of timelike-separated events while preserving the choice of future. This distinction prevents coordinate disagreements from becoming disagreements about which signal caused a response.
 
-In general relativity, the interval becomes $ds^2=g_{\mu\nu}(x)dx^\mu dx^\nu$. Light cones and clock readings can then vary with position. Before studying that geometry, [Vectors and tensors](tensors-and-tensor-fields.md) develops the transformation rules needed to express the same physical law in different coordinates.
+In general relativity, the interval becomes $ds^2=g_{\mu\nu}(x)dx^\mu dx^\nu$. Light cones and clock readings can then vary with position. Before studying that geometry, [Differential Geometry](tensors-and-tensor-fields.md) develops the transformation rules needed to express the same physical law in different coordinates.

@@ -12,7 +12,7 @@ export const groups = [
         "link": "/equivalence-principle.html"
       },
       {
-        "title": "Tensors and Tensor Fields",
+        "title": "Differential Geometry",
         "desc": "Scalars, vectors, tensors, and coordinate transformations.",
         "symbol": "Tμν",
         "link": "/tensors-and-tensor-fields.html"

@@ -144,6 +144,16 @@ Coordinates choose a basis as well as labels. On the Euclidean plane, Cartesian 
 
 $$x=r\cos\phi,\qquad y=r\sin\phi.$$
 
+The coordinate basis vectors are written
+
+$$\partial_a:=\frac{\partial}{\partial x^a}$$
+
+for the vector in the $x^a$ direction. The same symbol also denotes the corresponding directional-derivative operator. Thus $\partial_a f$ means “let the basis vector $\partial_a$ act on the scalar function $f$,” and the result is a **number** (the component of $df$), not another vector:
+
+$$\partial_a f=\frac{\partial f}{\partial x^a}.$$
+
+This is a useful notational compression: $\partial_a$ is a vector, while $\partial_a f$ is that vector applied to a function.
+
 The chain rule relates their coordinate bases:
 
 $$\partial_r=\cos\phi\,\partial_x+\sin\phi\,\partial_y,$$
@@ -162,7 +172,7 @@ $$\partial'_a=\frac{\partial x^b}{\partial x'^a}\partial_b.$$
 
 Polar coordinates fail at the origin, where the angle is undefined. Such coordinate failures must be distinguished from singularities of the geometry itself.
 
-## Contravariance: A Brief Reminder
+## Contravariance
 
 We need only one fact about vectors here: their upper-index components transform with the Jacobian,
 
@@ -256,13 +266,9 @@ Thus its polar metric components are $g_{rr}=1$, $g_{\phi\phi}=r^2$, and $g_{r\p
 
 In Cartesian Euclidean coordinates, the metric matrix is the identity, $g=I$. Having $g=I$ on a coordinate region does mean the geometry there is flat. The converse is more subtle: a flat geometry need not have $g=I$ in the coordinates currently being used, as polar coordinates show. Flatness means that there **exists** a coordinate system in which the metric takes the Euclidean identity form (at least locally).
 
-The metric turns a vector into a covector by fixing one argument:
+## Gradient from a Metric
 
-$$V^\flat=g(V,\mathord{\cdot}),\qquad V_a=g_{ab}V^b.$$
-
-Its inverse, defined by $g^{ab}g_{bc}=\delta^a{}_c$, reverses the operation. This is **lowering and raising indices**. In the polar example, $V_r=V^r$ but $V_\phi=r^2V^\phi$.
-
-We can now define the gradient vector by $g(\operatorname{grad}f,V)=df(V)$ for every $V$. Its components are
+The metric also defines the gradient vector by $g(\operatorname{grad}f,V)=df(V)$ for every $V$. Its components are
 
 $$\bigl(\operatorname{grad}f\bigr)^a=g^{ab}\partial_b f.$$
 
@@ -282,32 +288,178 @@ A spacetime metric is Lorentzian rather than positive definite. With our signatu
 
 ## Tensors
 
-Vectors, covectors, and metrics are examples of **tensors**. At a point, a tensor of type $(r,s)$ is a multilinear map that takes $r$ covectors and $s$ vectors as inputs and returns a scalar. Multilinearity means linearity in each input while the others are held fixed.
+We can meet tensors first as operators on vectors. In familiar linear-algebra notation, a linear operator $\mathbf{T}$ takes an input column vector $\mathbf{v}$ and returns an output column vector $\mathbf{w}$:
 
-Its components carry $r$ upper and $s$ lower indices. A vector has type $(1,0)$, a covector has type $(0,1)$, and the metric has type $(0,2)$. Scalars are tensors of type $(0,0)$.
+$$\mathbf{w}=\mathbf{T}\mathbf{v}.$$
 
-Tensor products build objects with more slots. For example,
+On a manifold, $\mathbf{v}$ and $\mathbf{w}$ are the coordinate columns of tangent vectors $V,W\in T_pM$, and $\mathbf{T}$ is represented by components $T^a{}_b$:
 
-$$\bigl(\alpha\otimes\beta\bigr)(V,W)=\alpha(V)\beta(W).$$
+$$W=T(V),\qquad W^a=T^a{}_bV^b.$$
 
-The metric can be written $g=g_{ab}\,dx^a\otimes dx^b$. Its symmetry is an additional property; a general tensor with two lower indices need not be symmetric. A two-form is instead antisymmetric.
+The lower index $b$ identifies the input component of $V$ being used, while the upper index $a$ identifies the component of the output vector. The repeated $b$ is summed—exactly the row-by-column multiplication in $\mathbf{w}=\mathbf{T}\mathbf{v}$. Thus $T^a{}_b$ is the coordinate description of a linear operator, not merely a rectangular array of numbers.
 
-Every upper index transforms with the Jacobian, and every lower index with its inverse. For a tensor of type $(1,1)$,
+For example, in two Cartesian dimensions, the operator
+
+$$\mathbf{T}=
+\begin{pmatrix}
+0 & -1\\
+1 & 0
+\end{pmatrix}$$
+
+rotates every vector counterclockwise by a right angle:
+
+$$
+\mathbf{w}
+=
+\mathbf{T}\mathbf{v}
+=
+\begin{pmatrix}
+0 & -1\\
+1 & 0
+\end{pmatrix}
+\begin{pmatrix}
+v_x\\
+v_y
+\end{pmatrix}
+=
+\begin{pmatrix}
+-v_y\\
+v_x
+\end{pmatrix}.
+$$
+
+The matrix product above is the familiar notation for a **contraction**. In index notation, applying the operator to the vector is
+
+$$W^a=T^a{}_bV^b,$$
+
+where the repeated index $b$ is summed. The operator's lower index and the vector's upper index are paired, leaving the output index $a$.
+
+A tensor such as $T^a{}_b$ is called a **mixed tensor**, or a tensor of type $(1,1)$. Its upper index is contravariant and its lower index is covariant. For now, we will simply use this mixed notation; we have not yet explained why an index can be moved from one position to the other.
+
+The operator must not depend on the coordinates used to describe it. Under a coordinate change, its components transform once like a vector and once like a covector:
 
 $$T'^a{}_b=\frac{\partial x'^a}{\partial x^c}\frac{\partial x^d}{\partial x'^b}T^c{}_d.$$
 
-This rule preserves the underlying multilinear map. An array of numbers is not automatically a tensor: its components must obey the appropriate transformation law.
+This ensures that transforming $V$, applying $T$, and then transforming the result gives the same geometric vector as applying $T$ first. An array of numbers is a tensor only if it obeys the appropriate transformation law. The position of each index is important, even though we are asking you to trust that fact for now. In Cartesian Euclidean coordinates, the metric is the identity, so the numerical distinction between $T_{ab}$, $T^a{}_b$, and $T^{ab}$ is hidden; general relativity makes that distinction visible.
 
-**Contraction** pairs an upper and a lower index and sums over them. It reduces the type by $(1,1)$; for example, $T^a{}_a$ is a scalar. The metric permits other pairings by first raising or lowering an index, as in $g_{ab}V^aW^b$. In a tensor equation, each unsummed, or **free**, index must occur in the same position on both sides. For example,
+Vectors, covectors, metrics, and operators are all examples of **tensors**. More generally, a tensor of type $(r,s)$ is a multilinear map that takes $r$ covectors and $s$ vectors as inputs and returns a scalar. Its components carry $r$ upper and $s$ lower indices. A vector has type $(1,0)$, a covector has type $(0,1)$, the metric has type $(0,2)$, and $T^a{}_b$ is type $(1,1)$. Scalars are tensors of type $(0,0)$.
+
+## Contraction
+
+Contraction pairs an upper and a lower index and sums over them. It reduces the type by $(1,1)$; for example, $T^a{}_a$ is a scalar. The matrix product for composing two operators is another contraction:
+
+$$
+(ST)^a{}_c=S^a{}_bT^b{}_c.
+$$
+
+The repeated index $b$ is the contracted row-column index, while $a$ and $c$ remain as the output and input indices of the composite operator. This is why matrix multiplication is naturally expressed as contraction of mixed tensors.
+
+Why does the result remain a tensor? Under a coordinate change, the contracted upper and lower indices contribute inverse Jacobian factors:
+
+$$
+S'^a{}_bT'^b{}_c
+=
+\frac{\partial x'^a}{\partial x^d}
+S^d{}_e
+\underbrace{\frac{\partial x^e}{\partial x'^b}
+\frac{\partial x'^b}{\partial x^f}}_{\delta^e{}_f}
+T^f{}_g
+\frac{\partial x^g}{\partial x'^c}.
+$$
+
+The middle factors cancel by the chain rule, leaving
+
+$$
+(ST)'^a{}_c
+=
+\frac{\partial x'^a}{\partial x^d}
+(ST)^d{}_g
+\frac{\partial x^g}{\partial x'^c},
+$$
+
+which is exactly the transformation law for another mixed tensor. Contraction is therefore a coordinate-independent operation, not an accidental property of one matrix representation.
+
+In a tensor equation, each unsummed, or **free**, index must occur in the same position on both sides. For example,
 
 $$A^a=T^a{}_bV^b$$
 
 has free index $a$ and summed index $b$. Tensor notation makes coordinate independence explicit, but that mathematical consistency alone does not establish that an equation describes nature.
 
+## Raising and Lowering Indices
+
+Recall that a **covector**, or **one-form**, is a linear map that takes one vector as input and returns a number. The metric is a bilinear pairing: it takes two vectors and returns a number. If we fix one argument of any bilinear map, the remaining slot is linear, so it becomes a covector. Given a vector $V$, we use the metric to define one by keeping the second slot open:
+
+$$V^\flat(W):=g(V,W).$$
+
+This is the metric-induced **musical map** $V\mapsto V^\flat$. It is canonical once the metric has been chosen, but there is no canonical vector-to-covector map on a bare vector space without such extra structure. The symbol $\flat$ is a mnemonic for the name **lowering**.[^flat-music]
+
+To read the component formula, first expand the vector in the coordinate basis. The numbers $V^b$ are its vector components, and $\partial_b$ are the basis vectors:
+
+$$V=V^b\partial_b.$$
+
+Let $\omega:=V^\flat$ denote the resulting covector, expanded in the dual basis $dx^a$:
+
+$$\omega=\omega_a\,dx^a,\qquad \omega_a=g_{ab}V^b.$$
+
+<details>
+<summary>Derivation of the component formula</summary>
+
+Here the metric components are defined by its action on the coordinate basis:
+
+$$g_{ab}:=g(\partial_a,\partial_b).$$
+
+Using $V=V^b\partial_b$, the covector $\omega=V^\flat$ acts on the basis vector $\partial_a$ as
+
+$$\omega_a=\omega(\partial_a)=V^\flat(\partial_a)=g(V,\partial_a)=V^b\,g(\partial_b,\partial_a)=g_{ab}V^b,$$
+
+where symmetry of the metric lets us write $g(\partial_b,\partial_a)=g_{ab}$. Thus $g_{ab}$ is the rule that takes the vector component column $V^b$ and calculates the covector component column $\omega_a$.
+
+</details>
+
+In polar coordinates on the Euclidean plane,
+
+$$d\ell^2=dr^2+r^2d\phi^2,$$
+
+so a vector
+
+$$V=V^r\partial_r+V^\phi\partial_\phi$$
+
+becomes the covector
+
+$$\omega=V^\flat=V^r\,dr+r^2V^\phi\,d\phi.$$
+
+The factor $r^2$ is the nontrivial metric component $g_{\phi\phi}$; it is exactly why the lower and upper $\phi$ components differ.
+
+The matrix $G=(g_{ab})$ represents this metric pairing, so the operation is $\boldsymbol{\omega}=G\mathbf V$. Any invertible matrix could define a reversible map between columns, but the metric is the particular symmetric, nondegenerate pairing chosen to define lengths, angles, and spacetime intervals.
+
+The inverse metric $g^{ab}$ performs the reverse operation:
+
+$$V^a=g^{ab}\omega_b,\qquad g^{ab}g_{bc}=\delta^a{}_c.$$
+
+To verify this, start with the covector components $\omega_b=g_{bc}V^c$ and multiply by $g^{ab}$:
+
+$$g^{ab}\omega_b=g^{ab}g_{bc}V^c=\delta^a{}_cV^c=V^a.$$
+
+Here $b$ is a repeated, or **dummy**, index, so we sum over it. The index $a$ appears once on each side and is therefore the component we are solving for. The identity
+
+$$g^{ab}g_{bc}=\delta^a{}_c$$
+
+plays the same role as $G^{-1}G=I$ for an ordinary matrix $G$. The Kronecker delta $\delta^a{}_c$ is the identity matrix in index notation: when it acts on $V^c$, it leaves the component labelled by $a$ unchanged,
+
+$$\delta^a{}_cV^c=V^a.$$
+
+In matrix language, lowering is $\boldsymbol{\omega}=G\mathbf{V}$, while raising is $\mathbf{V}=G^{-1}\boldsymbol{\omega}$. The index calculation above is precisely this matrix-inverse calculation written component by component.
+
+This is called **raising** the index. These are not changes to the underlying geometric object; they are two metric-dependent ways of representing related objects. In Cartesian Euclidean coordinates, where $g_{ab}=\delta_{ab}$, the numerical components happen to be unchanged. In polar coordinates, however,
+
+$$V_r=V^r,\qquad V_\phi=r^2V^\phi,$$
+
+so the distinction is visible.
+
+## Tensor Fields
+
 A **tensor field** assigns a tensor smoothly at each point. In general relativity, the metric $g_{\mu\nu}$, stress–energy tensor $T_{\mu\nu}$, and curvature tensor $R^\rho{}_{\sigma\mu\nu}$ are central examples. Their components vary with position and coordinate choice while the geometric fields remain well defined.
 
-Differentiation needs additional care. The derivatives $\partial_a f$ of a scalar form a covector, but $\partial_aV^b$ do not generally form a tensor: differentiating the vector transformation law also differentiates its Jacobian. A connection supplies the correction, giving the covariant derivative
+> **Looking ahead.** The tensors introduced here are the language needed for curvature. In the subsequent pages, we will develop the metric, connection, and curvature tensors in more detail, and see how they describe gravity in general relativity.
 
-$$\nabla_aV^b=\partial_aV^b+\Gamma^b{}_{ac}V^c.$$
-
-The coefficients $\Gamma^b{}_{ac}$ compensate for how the basis varies; they are not themselves tensor components. For the metric's Levi-Civita connection, they are determined by the metric and its first derivatives. We will develop this construction in [Curvature](curvature.md), after examining measurements more closely in [Riemannian Spaces and the Metric Tensor](riemannian-spaces-and-metric-tensor.md).
+[^flat-music]: In music, a **flat** lowers a note by a semitone; the same visual symbol is used here as a reminder that the metric lowers an index. See [Flat (music)](https://en.wikipedia.org/wiki/Flat_(music)).
