@@ -2,7 +2,7 @@
 
 Coordinates identify an event but do not state how far apart two nearby events are or how much time a moving clock records. A metric supplies that measurement rule. In general relativity it also determines which directions light can follow.
 
-## 1. Riemannian and Lorentzian Geometry
+## Riemannian and Lorentzian Geometry
 
 A smooth manifold supplies local coordinates; a metric supplies measurements. A **Riemannian space** has a positive-definite metric, so every nonzero tangent vector has positive squared length. On a spatial surface, a path's length is
 
@@ -12,7 +12,7 @@ Here $a,b$ label the surface's coordinates. A round sphere of radius $R_0$ has $
 
 Spacetime instead uses Lorentzian geometry, where timelike, null, and spacelike vectors have different signs of squared norm. We use the same tensor methods, but spatial-distance intuition does not apply to every spacetime interval. [Manifolds](manifolds.md) provides additional background on charts and tangent spaces.
 
-## 2. The Line Element
+## The Line Element
 
 A **metric** is a symmetric, nondegenerate bilinear form on each tangent space. Its components give
 
@@ -22,7 +22,7 @@ Bilinear means linear in each of its two vector arguments. Nondegenerate means t
 
 The components depend on coordinates, while $ds^2$ does not. A term written as $2g_{0r}c\,dt\,dr$ represents both symmetric off-diagonal contributions. Reading the coefficient of the cross term as $g_{0r}$ would introduce a factor-of-two error.
 
-## 3. Coordinates Can Change the Components
+## Coordinates Can Change the Components
 
 Flat spacetime in spherical spatial coordinates has
 
@@ -41,7 +41,7 @@ Insert this into $ds^2=c^2dt^2-d\ell^2$. The factors of $r$ convert angular chan
 
 </details>
 
-## 4. Clock Readings and Light Cones
+## Clock Readings and Light Cones
 
 Along a timelike curve,
 
@@ -51,7 +51,7 @@ This integral gives a clock reading independent of the curve's parameter or coor
 
 Null directions satisfy $g_{\mu\nu}dx^\mu dx^\nu=0$. For a radial metric $ds^2=A(r)c^2dt^2-B(r)dr^2$, a light ray has coordinate speed $dr/dt=\pm c\sqrt{A/B}$. A nearby observer using local rulers and clocks still measures $c$. Coordinate speed is not a local measurement.
 
-## 5. Local Inertial Coordinates
+## Local Inertial Coordinates
 
 Near any regular event, suitable coordinates give
 
@@ -61,7 +61,7 @@ These are **local inertial coordinates** for the metric's Levi-Civita connection
 
 An orthonormal frame is a basis that gives the Minkowski inner products at a point. Such a basis need not arise from one coordinate chart over a region. We will distinguish local measurements in these frames from coordinate components.
 
-## 6. Volume and Geometry
+## Volume and Geometry
 
 Coordinate boxes also require a geometric volume factor. With $g=\det(g_{\mu\nu})$, the invariant four-volume is
 

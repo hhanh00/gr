@@ -2,7 +2,7 @@
 
 A clock measures the time between events along its own path. Two clocks that separate and reunite can record different elapsed times, even when both work correctly. To describe this without choosing a preferred observer, we combine space and time into spacetime and distinguish coordinate labels from measurements.
 
-## 1. Events and Reference Frames
+## Events and Reference Frames
 
 An **event** is a particular occurrence at a place and time. In an inertial frame, where force-free particles move at constant velocity, assign it coordinates
 
@@ -16,7 +16,7 @@ $$ct'=\gamma(ct-\beta x),\qquad x'=\gamma(x-\beta ct),\qquad \beta=v/c,\quad \ga
 
 The transverse coordinates stay unchanged. Since $t'$ depends on $x$, observers can disagree about the simultaneity of separated events. This disagreement does not imply that a clock has changed its rate through a coordinate transformation.
 
-## 2. The Invariant Interval
+## The Invariant Interval
 
 To compare descriptions, form a quantity that remains unchanged under the transformation:
 
@@ -41,7 +41,7 @@ The cross terms cancel. The remaining factor is $\gamma^2(1-\beta^2)=1$, giving 
 
 </details>
 
-## 3. Proper Time and Moving Clocks
+## Proper Time and Moving Clocks
 
 **Proper time** $\tau$ is the time recorded by a clock following a timelike path. Since that clock has no spatial displacement in its instantaneous rest frame,
 
@@ -51,7 +51,7 @@ For a path with changing speed, integrate this expression. Coordinate time descr
 
 For example, suppose one clock remains at rest while another travels out and back at speed $v$, neglecting the short turnaround. If the stationary clock records total duration $T$, the traveler records $T\sqrt{1-v^2/c^2}$. Their paths differ, so their readings differ. The turnaround prevents treating both complete journeys as inertial motion in one frame.
 
-## 4. Light Cones and Causality
+## Light Cones and Causality
 
 In a diagram with $ct$ vertical and $x$ horizontal, light rays satisfy $x=\pm ct$. These lines bound the **light cone**, the set of lightlike directions from an event. Future-directed timelike paths lie inside the future cone.
 

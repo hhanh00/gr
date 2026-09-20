@@ -2,7 +2,7 @@
 
 A globe has no preferred flat map. Every map introduces coordinates that work over some region and fail elsewhere, while distances and routes on the Earth remain well defined. Spacetime requires the same distinction between a geometric space and the coordinates used to describe it.
 
-## 1. Local Coordinates
+## Local Coordinates
 
 A smooth **manifold** is a space that locally admits coordinates like those of ordinary Euclidean space, with smooth coordinate changes between overlapping regions. General relativity describes spacetime with a four-dimensional manifold $M$.
 
@@ -14,7 +14,7 @@ Its four coordinate functions label events. A collection of compatible charts co
 
 The manifold alone has no clock readings, distances, or light cones. Those require a metric. Four-dimensional coordinates also do not imply an external fifth dimension containing spacetime.
 
-## 2. Overlapping Charts
+## Overlapping Charts
 
 Suppose $\varphi$ and $\psi$ cover the same event. Their **transition map** converts its labels:
 
@@ -39,7 +39,7 @@ Projection from the south pole covers the point missing from this chart. On the 
 
 </details>
 
-## 3. Tangent Spaces
+## Tangent Spaces
 
 At each point $p$, the tangent directions form a vector space $T_pM$, the **tangent space**. One intrinsic definition treats a vector as a directional derivative acting on smooth scalar functions:
 
@@ -49,7 +49,7 @@ A curve through $p$ supplies such an operation by differentiating $f$ along the 
 
 Vectors at different points belong to different tangent spaces. Adding them requires an additional comparison rule, a connection. A common coordinate label does not supply a coordinate-independent identification of those spaces.
 
-## 4. Local and Global Structure
+## Local and Global Structure
 
 Local coordinates do not determine global **topology**, the pattern of connectedness and continuity. A plane and a cylinder both have locally two-dimensional charts, but a loop around the cylinder cannot contract to a point on its surface.
 

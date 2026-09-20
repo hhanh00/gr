@@ -1,8 +1,8 @@
-# Black Holes (II: Falling In and Formation)
+# Black Holes: Falling In and Formation
 
 A horizon is a boundary in the set of possible signal paths. To determine whether light can escape, we must examine future-directed trajectories rather than infer physical behavior from a diverging metric component.
 
-## 1. The Event Horizon
+## The Event Horizon
 
 In an asymptotically flat spacetime, a **black-hole region** contains events from which no future-directed causal signal can reach future null infinity, the idealized destination of escaping light. Its boundary is the **event horizon**.
 
@@ -10,7 +10,7 @@ This definition is global. Identifying an event horizon requires the spacetime's
 
 For a Schwarzschild black hole, the event horizon is $r=r_s$. A star with surface radius larger than $r_s$ can have a Schwarzschild exterior without having a horizon.
 
-## 2. Coordinates That Cross the Horizon
+## Coordinates That Cross the Horizon
 
 Define the **tortoise coordinate**
 
@@ -37,7 +37,7 @@ the outgoing family. This transformation makes their behavior at the horizon exp
 
 At the horizon the outgoing family stays at fixed radius. Inside it, even these future-directed outgoing rays move toward smaller $r$. This causal restriction prevents escape; it is not a failure of an engine to exceed a Newtonian escape speed.
 
-## 3. Kruskal Coordinates
+## Kruskal Coordinates
 
 The ingoing chart crosses the future horizon, but a chart covering both horizon families makes the eternal solution's causal structure clearer. In the exterior, define dimensionless coordinates
 
@@ -66,7 +66,7 @@ If we define $T=(V+U)/2$ and $X=(V-U)/2$, then $dU\,dV=dT^2-dX^2$. Light rays ap
 
 </details>
 
-## 4. Falling and Observing
+## Falling and Observing
 
 A freely falling observer crosses a regular Schwarzschild horizon in finite proper time. Schwarzschild coordinate time tends to infinity for that crossing, but that chart does not extend smoothly through it.
 
@@ -74,13 +74,13 @@ A distant observer receives increasingly delayed and redshifted signals from the
 
 Horizon-crossing tidal forces depend on the mass. The curvature invariant at $r_s$ scales as $1/r_s^4$, so large black holes can have small tidal curvature at the horizon even though their centers remain singular in the classical solution.
 
-## 5. Singularities and Extensions
+## Singularities and Extensions
 
 A coordinate singularity can disappear in another chart. A physical singularity cannot be removed that way. More generally, singularity theorems concern **geodesic incompleteness**: a causal geodesic ends after a finite affine parameter without continuation within the spacetime. Curvature divergence is an important diagnostic, but it is not the complete definition.
 
 The maximally extended eternal Schwarzschild solution contains additional exterior and white-hole regions. A black hole formed by stellar collapse does not automatically contain that entire eternal extension; its past includes collapsing matter.
 
-## 6. Falling In and Gravitational Collapse
+## Falling In and Gravitational Collapse
 
 For a radial timelike geodesic, the conserved quantity $e=f\,dt/d\tau$ and the normalization give
 
@@ -102,7 +102,7 @@ As collapse proceeds, trapped spheres can form: both future-directed ingoing and
 
 The collapse spacetime has one physical exterior and a collapsing interior. It does not require the second exterior or past white-hole region of the eternal Kruskal extension. A coordinate extension establishes how the idealized eternal solution continues; a formation model establishes which spacetime the matter actually generates.
 
-## 7. Rotation and Quantum Effects
+## Rotation and Quantum Effects
 
 Astrophysical black holes generally rotate. The stationary vacuum solution for rotation is the Kerr metric. Its **ergoregion** contains points where an observer cannot remain stationary relative to infinity; its boundary differs from the event horizon. Deriving Kerr requires mathematics beyond this spherical chapter.
 

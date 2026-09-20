@@ -1,8 +1,8 @@
-# Black Holes (I)
+# Black Holes: Schwarzschild Geometry
 
 Outside a spherical body, Newtonian gravity depends only on its total mass. General relativity has a corresponding vacuum geometry. It predicts the familiar weak-field motion and additional effects on clocks, orbits, and light.
 
-## 1. The Exterior Metric
+## The Exterior Metric
 
 Assume spherical symmetry, vacuum, and $\Lambda=0$. The Schwarzschild line element is
 
@@ -14,7 +14,7 @@ Birkhoff's theorem states that any spherically symmetric vacuum region is locall
 
 The [preceding chapter](metric-for-a-gravitational-field.md) derived this metric from the spherical vacuum equations and matched its mass parameter to the Newtonian field. We now use that geometry to calculate measurements and motion. For an ordinary star, the exterior formula applies outside its surface; the interior requires a matter solution.
 
-## 2. Static Clocks and Radial Distance
+## Static Clocks and Radial Distance
 
 A clock held at fixed $r,\theta,\phi$ outside $r_s$ records
 
@@ -28,7 +28,7 @@ This diverges at the horizon. It describes the force required to hover, not an a
 
 At fixed Schwarzschild time, radial proper distance is $d\ell=dr/\sqrt{f(r)}$. Clock rate and radial distance both matter when we calculate light propagation.
 
-## 3. Orbits from Conserved Quantities
+## Orbits from Conserved Quantities
 
 Choose an equatorial timelike geodesic, $\theta=\pi/2$. Time and rotational symmetries give constants
 
@@ -42,7 +42,7 @@ The second term is an **effective potential**, a function used to identify radia
 
 For timelike circular geodesics, the innermost stable orbit is $r=3r_s=6GM/c^2$. Null circular geodesics lie at $r=3r_s/2$ and are unstable. These results follow by differentiating the corresponding effective potentials; they are not the horizon radius.
 
-## 4. Horizon and Curvature
+## Horizon and Curvature
 
 If the vacuum geometry extends inward to form a black hole, $r=r_s$ is the **event horizon**, the boundary beyond which future-directed causal signals cannot escape to distant observers. Outside it, stationary worldlines are timelike. At it, the stationary direction becomes null; inside, fixed-radius worldlines cannot describe physical stationary observers.
 

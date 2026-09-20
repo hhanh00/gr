@@ -2,7 +2,7 @@
 
 On sufficiently large scales, we can model the universe as spatially homogeneous and isotropic. These assumptions reduce the geometry to a time-dependent scale factor. Einstein's equations then relate expansion to matter, radiation, pressure, and a cosmological constant.
 
-## 1. The Expanding Metric
+## The Expanding Metric
 
 The **Friedmann–Lemaître–Robertson–Walker metric**, abbreviated FLRW, is
 
@@ -14,7 +14,7 @@ Homogeneity means the spatial geometry has no preferred location; isotropy means
 
 The **Hubble parameter** is $H=\dot a/a$. For comoving objects at fixed spatial separation in the flat case, their proper separation on a constant-$t$ slice satisfies $\dot D=HD$. This recession rate is not a local relative velocity between objects meeting at one event.
 
-## 2. The Friedmann Equations
+## The Friedmann Equations
 
 For a perfect fluid of mass-equivalent density $\rho=\epsilon/c^2$ and pressure $p$, our field-equation convention gives
 
@@ -30,7 +30,7 @@ $$\dot\rho+3H\left(\rho+\frac p{c^2}\right)=0.$$
 
 An **equation of state** relates pressure to density, completing the fluid model. For constant $w$ defined by $p=w\rho c^2$, this gives $\rho\propto a^{-3(1+w)}$.
 
-## 3. Matter and Radiation
+## Matter and Radiation
 
 Pressureless matter has $w=0$ and $\rho_m\propto a^{-3}$. Radiation has $w=1/3$ and $\rho_r\propto a^{-4}$. Expansion dilutes the number of photons per volume and decreases each photon's energy, producing the additional inverse power of $a$.
 
@@ -47,7 +47,7 @@ Integrating from the idealized initial singularity yields $a(t)\propto t^{2/[3(1
 
 A pure positive-$\Lambda$ flat solution has constant $H=\sqrt{\Lambda c^2/3}$ and exponential expansion. Treating $\Lambda$ as a fluid instead would give $w=-1$; do not count it both as a separate fluid and as the explicit cosmological term.
 
-## 4. Redshift and Horizons
+## Redshift and Horizons
 
 Light emitted at $t_e$ and observed at $t_o$ has
 

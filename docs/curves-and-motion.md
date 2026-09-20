@@ -2,7 +2,7 @@
 
 A particle's trajectory is a sequence of events, not just a line through space. Describing it as a spacetime curve keeps the clock carried by the particle in the calculation. We can then separate a coordinate acceleration from an acceleration that an instrument actually measures.
 
-## 1. Parameterizing a Worldline
+## Parameterizing a Worldline
 
 A **worldline** is a particle's path through spacetime:
 
@@ -16,7 +16,7 @@ $$u^\mu=\frac{dx^\mu}{d\tau},\qquad g_{\mu\nu}u^\mu u^\nu=c^2.$$
 
 In an inertial Minkowski frame, $u^\mu=\gamma(c,\mathbf v)$. Its time component accounts for the difference between coordinate time and the particle's clock reading.
 
-## 2. Acceleration and Forces
+## Acceleration and Forces
 
 In flat Cartesian coordinates, define four-acceleration $a^\mu=du^\mu/d\tau$. Differentiate the normalization:
 
@@ -32,7 +32,7 @@ $$a^\mu=\frac{Du^\mu}{d\tau}=\frac{du^\mu}{d\tau}+\Gamma^\mu{}_{\alpha\beta}u^\a
 
 The connection coefficients $\Gamma^\mu{}_{\alpha\beta}$ correct for changes in the basis. We derive them in [Connections and curvature](curvature.md).
 
-## 3. Coordinate Acceleration in Flat Space
+## Coordinate Acceleration in Flat Space
 
 Even a straight trajectory can have changing coordinate velocity. On a Euclidean plane, a free particle's polar-coordinate equations are
 
@@ -51,7 +51,7 @@ These equations describe straight Cartesian motion expressed with a changing pol
 
 </details>
 
-## 4. Light and Null Parameters
+## Light and Null Parameters
 
 Light follows a **null curve**, with $g_{\mu\nu}dx^\mu dx^\nu=0$. Its proper-time increment vanishes, so proper time cannot parameterize its motion.
 
@@ -61,7 +61,7 @@ $$\frac{d^2x^\mu}{d\lambda^2}+\Gamma^\mu{}_{\alpha\beta}\frac{dx^\alpha}{d\lambd
 
 Affine parameters remain affine under $\lambda\to A\lambda+B$ with constant $A\ne0$. An arbitrary reparameterization generally adds a term proportional to the tangent on the right-hand side. Affine therefore describes the parameter choice, not a particular shape of path.
 
-## 5. Measurements Along a Curve
+## Measurements Along a Curve
 
 For a photon with four-momentum $p^\mu$, an observer with four-velocity $u^\mu$ measures energy $E=p_\mu u^\mu$ in our $(+,-,-,-)$ convention. Different observers can measure different energies for the same photon. This includes ordinary Doppler shifts and, later, gravitational redshift.
 

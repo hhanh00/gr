@@ -2,7 +2,7 @@
 
 Drop different test bodies in the same gravitational field and, after accounting for nongravitational forces, they follow the same trajectory from the same initial conditions. This universality makes a geometric description possible: the path can depend on spacetime and initial velocity rather than on the body's composition.
 
-## 1. Newtonian Gravity and Free Fall
+## Newtonian Gravity and Free Fall
 
 For a spherical source of mass $M$, Newton's gravitational force on a test body is
 
@@ -21,7 +21,7 @@ If $m_g/m_i$ is the same for all test bodies, they share the same acceleration. 
 
 This principle does not assert that every extended object follows exactly the same motion. Spin, tidal deformation, and self-gravity require more detailed equations.
 
-## 2. A Falling Laboratory
+## A Falling Laboratory
 
 A freely falling laboratory and an unsupported object inside it have nearly the same gravitational acceleration. The object therefore floats relative to the laboratory. An accelerometer carried by the lab reads zero.
 
@@ -35,7 +35,7 @@ A laboratory supported on the ground behaves differently. The floor exerts a for
 
 The **Einstein equivalence principle** extends universal free fall: local nongravitational experiments in a freely falling laboratory have the special-relativistic form, independent of the laboratory's location and velocity. This motivates describing matter with a locally Minkowskian metric. It does not uniquely determine the Einstein field equations; alternative metric theories can also satisfy it.
 
-## 3. The Limits of a Local Description
+## The Limits of a Local Description
 
 A freely falling coordinate system can remove the connection at one event. It cannot generally remove curvature over a finite region.
 
@@ -45,7 +45,7 @@ Two particles dropped at slightly different positions above a spherical body mov
 
 The useful laboratory must be small in space and short in duration compared with the scales over which these effects become measurable. “Local” expresses this physical restriction; it does not imply that gravity disappears throughout an extended elevator.
 
-## 4. Light Bending in a Lift
+## Light Bending in a Lift
 
 The lift also shows why gravity should bend light, if the beam crosses it sideways instead of climbing straight up. Send a pulse through a small hole in one wall while the lift accelerates upward through gravity-free space. Outside the lift, in flat space, the pulse travels in a straight line at a fixed height. But the lift keeps gaining speed during the crossing, so relative to the cabin the pulse arrives at the far wall lower than it entered, and its path inside the lift looks bent toward the floor.
 

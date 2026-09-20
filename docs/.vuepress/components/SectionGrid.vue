@@ -62,10 +62,6 @@ const mainChapterCount = groups.slice(0, 3).reduce((count, group) => count + gro
           class="stage"
           :style="{ '--accent': g.color, '--accent-soft': g.soft }"
         >
-          <div class="stage-marker" aria-hidden="true">
-            <span>{{ g.number }}</span>
-          </div>
-
           <header class="stage-head">
             <p>{{ g.items.length }} {{ g.items.length === 1 ? 'chapter' : 'chapters' }}</p>
             <h3>{{ g.name }}</h3>
@@ -82,7 +78,6 @@ const mainChapterCount = groups.slice(0, 3).reduce((count, group) => count + gro
               :href="s.link"
             >
               <div class="card-topline">
-                <span class="chapter-number">{{ s.number.startsWith('S') ? 'Supporting ' + s.number.slice(1) : 'Chapter ' + s.number }}</span>
                 <span class="chapter-symbol">{{ s.symbol }}</span>
               </div>
               <h4>{{ s.title }}</h4>
@@ -158,12 +153,8 @@ const mainChapterCount = groups.slice(0, 3).reduce((count, group) => count + gro
 .curriculum-intro { display: flex; align-items: end; justify-content: space-between; gap: 3rem; padding-bottom: 2.5rem; }
 .curriculum-intro h2 { margin: .4rem 0 0; color: var(--ink); font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; letter-spacing: -.035em; }
 .curriculum-intro > p { max-width: 20rem; margin: 0 0 .35rem; color: var(--muted); font-size: .9rem; line-height: 1.55; }
-.stages { position: relative; }
-.stages::before { content: ''; position: absolute; top: 1.6rem; bottom: 1.6rem; left: 25px; width: 1px; background: var(--line); }
-.stage { position: relative; display: grid; grid-template-columns: 52px minmax(180px, .72fr) minmax(0, 2.2fr); gap: clamp(1.25rem, 3vw, 3.5rem); padding: 2.8rem 0; border-top: 1px solid var(--line); }
+.stage { position: relative; display: grid; grid-template-columns: minmax(180px, .72fr) minmax(0, 2.2fr); gap: clamp(1.25rem, 3vw, 3.5rem); padding: 2.8rem 0; border-top: 1px solid var(--line); }
 .stage:last-child { border-bottom: 1px solid var(--line); }
-.stage-marker { position: relative; z-index: 1; padding-top: .1rem; }
-.stage-marker span { display: grid; place-items: center; width: 51px; height: 51px; border: 1px solid color-mix(in srgb, var(--accent) 35%, white); border-radius: 50%; color: var(--accent); background: var(--paper); font-family: Georgia, serif; font-size: .9rem; font-weight: 700; }
 .stage-head > p:first-child { margin: .1rem 0 .45rem; color: var(--accent); font-size: .65rem; font-weight: 750; letter-spacing: .1em; text-transform: uppercase; }
 .stage-head h3 { margin: 0; border: 0; color: var(--ink); font-size: 1.45rem; font-weight: 700; letter-spacing: -.025em; }
 .stage-rule { width: 2rem; height: 2px; margin: 1.1rem 0; background: var(--accent); }
@@ -174,7 +165,6 @@ const mainChapterCount = groups.slice(0, 3).reduce((count, group) => count + gro
 .chapter-card:hover { border-color: color-mix(in srgb, var(--accent) 45%, white); box-shadow: 0 14px 36px rgba(21, 34, 56, .09); transform: translateY(-4px); }
 .chapter-card:hover::before { transform: scaleX(1); }
 .card-topline { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-.chapter-number { color: #8a94a3; font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
 .chapter-symbol { display: grid; place-items: center; min-width: 38px; height: 30px; padding: 0 .35rem; border-radius: 6px; color: var(--accent); background: var(--accent-soft); font-family: Georgia, serif; font-size: .76rem; font-style: italic; }
 .chapter-card h4 { margin: 1.5rem 0 .65rem; color: var(--ink); font-size: 1.05rem; font-weight: 700; letter-spacing: -.015em; line-height: 1.2; }
 .chapter-card > p { margin: 0; color: var(--muted); font-size: .78rem; line-height: 1.55; }
@@ -185,8 +175,7 @@ const mainChapterCount = groups.slice(0, 3).reduce((count, group) => count + gro
 .final-card { min-height: 200px; background: linear-gradient(135deg, #fff, color-mix(in srgb, var(--accent-soft) 52%, white)); }
 @media (max-width: 960px) {
   .home-hero { grid-template-columns: 1fr minmax(310px, .75fr); min-height: 500px; gap: 2rem; }
-  .stage { grid-template-columns: 52px 1fr; }
-  .cards { grid-column: 2; }
+  .stage { grid-template-columns: 1fr; }
   .stage-desc { max-width: 30rem; }
 }
 @media (max-width: 720px) {
@@ -204,10 +193,7 @@ const mainChapterCount = groups.slice(0, 3).reduce((count, group) => count + gro
   .home-hero h1 { font-size: 3.25rem; }
   .hero-actions { align-items: flex-start; flex-direction: column; gap: 1rem; }
   .field-visual { width: 108%; margin-left: -4%; }
-  .stage { grid-template-columns: 40px 1fr; gap: 1rem; }
-  .stages::before { left: 19px; }
-  .stage-marker span { width: 39px; height: 39px; font-size: .72rem; }
-  .cards { grid-column: 1 / -1; }
+  .stage { gap: 1rem; }
 }
 [data-theme='dark'] .gr-home { --ink: #edf3fb; --muted: #aab6c6; --paper: #1b1b1f; --line: #343b47; }
 [data-theme='dark'] .field-visual { background: radial-gradient(circle at 50% 50%, rgba(96, 165, 250, .13), transparent 24%), linear-gradient(145deg, rgba(30, 58, 138, .25), rgba(30, 41, 59, .08)); }

@@ -2,7 +2,7 @@
 
 An unsupported particle follows a path with zero proper acceleration. Its coordinate position can still accelerate near a gravitating body. A geodesic expresses this motion through the connection, so that the same free-fall law holds in every coordinate system.
 
-## 1. Parallel Transport of the Tangent
+## Parallel Transport of the Tangent
 
 A **geodesic** transports its own tangent parallel to itself. With an affine parameter $\lambda$,
 
@@ -12,7 +12,7 @@ Dots in this chapter mean $d/d\lambda$. For a timelike geodesic, proper time is 
 
 An accelerometer records the covariant acceleration. Thus a freely falling satellite has zero proper acceleration even while its coordinates describe an orbit. A supported observer at fixed radius generally has nonzero proper acceleration.
 
-## 2. A Variational Derivation
+## A Variational Derivation
 
 For a massive particle, the physical action is $S=-mc^2\int d\tau$. Its extremals are timelike geodesics. For an affine parameter, a convenient equivalent way to derive their paths uses
 
@@ -37,7 +37,7 @@ Symmetrize the middle coefficient in $\alpha,\beta$, because the velocity produc
 
 A timelike geodesic locally maximizes proper time between sufficiently nearby fixed endpoints. We should not extend that statement to arbitrary distant endpoints, where conjugate points and multiple geodesics can occur.
 
-## 3. Conserved Quantities from Symmetry
+## Conserved Quantities from Symmetry
 
 If the metric does not depend on one coordinate, that coordinate is **cyclic** in $L$. Its conjugate momentum is constant:
 
@@ -47,7 +47,7 @@ Time-translation symmetry gives an energy-like constant; rotational symmetry giv
 
 More generally a **Killing vector** $K^\mu$ generates a continuous metric-preserving symmetry and obeys $\nabla_\mu K_\nu+\nabla_\nu K_\mu=0$. Then $K_\mu\dot x^\mu$ is constant along an affine geodesic. Its derivative contracts the antisymmetric part of $\nabla K$ with the symmetric tangent product, giving zero.
 
-## 4. The Newtonian Limit
+## The Newtonian Limit
 
 For a weak static field, $g_{00}\simeq1+2\Phi/c^2$ and $g_{ij}\simeq-\delta_{ij}$. Then
 

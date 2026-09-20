@@ -24,10 +24,10 @@ export default {
         children: group.items.map(item => ({ text: item.title, link: item.link })),
       })),
     ],
-    // Keep the ten main chapters together for previous/next navigation.
+    // Keep the main chapters together for previous/next navigation.
     sidebar: [
       ...groups.slice(0, 3).flatMap(group => group.items.map(item => ({
-        text: `${item.number}. ${item.title}`, link: item.link,
+        text: item.title, link: item.link,
       }))),
       {
         text: 'Supporting Chapters',

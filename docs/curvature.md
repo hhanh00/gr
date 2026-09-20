@@ -2,7 +2,7 @@
 
 Two nearby falling particles can accelerate toward one another even though each accelerometer reads zero. To describe this relative motion, we need a derivative that compares vectors at neighboring points and a measure of the failure of that comparison to agree around a loop.
 
-## 1. Covariant Differentiation
+## Covariant Differentiation
 
 Ordinary differentiation changes vector components without correcting for a changing basis. A **connection** specifies that correction. For a vector and a covector,
 
@@ -14,7 +14,7 @@ The signs ensure that differentiation of a contraction follows the product rule.
 
 The coefficients $\Gamma^\rho{}_{\mu\nu}$, often called **Christoffel symbols** for the metric connection, do not form a tensor. Their coordinate transformation includes the extra terms needed to make $\nabla_\mu V^\nu$ a tensor.
 
-## 2. The Metric Connection
+## The Metric Connection
 
 General relativity normally uses the **Levi-Civita connection**, which preserves the metric, $\nabla_\rho g_{\mu\nu}=0$, and has zero torsion, $\Gamma^\rho{}_{\mu\nu}=\Gamma^\rho{}_{\nu\mu}$ in a coordinate basis. These conditions determine
 
@@ -31,7 +31,7 @@ Add the equations with derivatives $\partial_\mu g_{\nu\sigma}$ and $\partial_\n
 
 </details>
 
-## 3. Parallel Transport
+## Parallel Transport
 
 **Parallel transport** along $x^\mu(\lambda)$ keeps a vector covariantly constant:
 
@@ -41,7 +41,7 @@ Metric compatibility preserves its inner products during transport. On a curved 
 
 As a useful check, the flat polar-plane metric has $\Gamma^r{}_{\phi\phi}=-r$ and $\Gamma^\phi{}_{r\phi}=1/r$. The coefficients are nonzero, but its curvature vanishes. We therefore cannot identify gravity or curvature with the mere presence of Christoffel symbols.
 
-## 4. The Riemann Tensor
+## The Riemann Tensor
 
 Define curvature by the derivative commutator:
 

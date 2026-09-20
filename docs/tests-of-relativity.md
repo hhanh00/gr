@@ -2,7 +2,7 @@
 
 To test a geometric theory, calculate an observable and compare it with a measurement under the same conditions. Clock readings, image positions, orbital angles, and signal travel times provide different comparisons. No single successful measurement establishes every part of general relativity.
 
-## 1. Free Fall and Clock Comparisons
+## Free Fall and Clock Comparisons
 
 Universality-of-free-fall experiments compare the accelerations of bodies with different composition. A common measure is the **Eötvös parameter**
 
@@ -12,7 +12,7 @@ The weak equivalence principle predicts $\eta=0$ for ideal test bodies in the sa
 
 Clock comparisons test the predicted weak-field rate difference $\Delta\nu/\nu\simeq\Delta\Phi/c^2$, with a stated convention for comparing the clocks. Frequency transfer also includes motion, atmospheric effects, and the signal path. Satellite timekeeping combines gravitational shifts with special-relativistic velocity shifts rather than treating either in isolation.
 
-## 2. Perihelion Precession
+## Perihelion Precession
 
 A bound orbit in Schwarzschild spacetime is not a closed Kepler ellipse. For a weak-field orbit with semimajor axis $a$ and eccentricity $e$, the additional perihelion advance per orbit is
 
@@ -37,7 +37,7 @@ One radial cycle then spans $2\pi/(1-\delta)$, giving extra angle $2\pi\delta$ t
 
 Comparing this prediction with a planetary orbit requires subtracting or fitting other contributions, including perturbations from planets and the Sun's nonspherical mass distribution.
 
-## 3. Light Deflection and Radar Delay
+## Light Deflection and Radar Delay
 
 Light bending probes the spacetime geometry along a null path. In a weak static parameterization, the **post-Newtonian parameter** $\gamma_{\rm PPN}$ measures spatial curvature relative to the Newtonian potential. It is unrelated to the Lorentz factor used in special relativity.
 
@@ -53,7 +53,7 @@ $$\Delta t\simeq(1+\gamma_{\rm PPN})\frac{GM}{c^3}\ln\frac{r_e+r_o+R}{r_e+r_o-R}
 
 $r_e$ and $r_o$ are the endpoint radii, and $R$ is their Euclidean separation at leading order. A round-trip measurement includes the return path and conversion to the observing clock's proper time.
 
-## 4. Binary Motion and Radiation
+## Binary Motion and Radiation
 
 Binary pulsar timing tests orbital dynamics and the energy loss predicted by gravitational radiation. Interpreting an orbital-period change also requires corrections for relative acceleration and other astrophysical effects.
 
@@ -61,7 +61,7 @@ Gravitational-wave observations test the waveform's phase and amplitude evolutio
 
 These comparisons extend the weak-field tests to relativistic motion and strong gravitational fields. They do not establish a quantum theory of gravity or eliminate every possible modification outside the tested regime.
 
-## 5. Connecting the Sequence
+## Connecting the Sequence
 
 The chapters began with invariant intervals and clock readings, developed tensors and curvature, and introduced Einstein's dynamical equations. Schwarzschild and FLRW supplied concrete solutions. Light propagation and gravitational waves then supplied observables.
 

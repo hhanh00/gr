@@ -2,7 +2,7 @@
 
 A light ray carries two kinds of information: its trajectory determines the apparent direction of a source, and its frequency records the relation between emitter and observer clocks. Gravity changes both. We calculate them separately so that coordinate effects do not become mistaken for local changes in light speed.
 
-## 1. The Frequency an Observer Measures
+## The Frequency an Observer Measures
 
 A photon has four-momentum $p^\mu$. An observer with four-velocity $u^\mu$ measures $E=p_\mu u^\mu=h\nu$, where $h$ here is Planck's constant.
 
@@ -12,7 +12,7 @@ $$\frac{\nu_o}{\nu_e}=\sqrt{\frac{g_{00}(e)}{g_{00}(o)}}.$$
 
 This relation assumes stationary emitter and observer in the static region. Their motion would add Doppler factors.
 
-## 2. Gravitational Redshift
+## Gravitational Redshift
 
 For the Schwarzschild exterior,
 
@@ -26,7 +26,7 @@ The locally measured photon energy changes between these observers, while the co
 
 Cosmological redshift instead follows $1+z=a_o/a_e$. A general evolving FLRW spacetime has no corresponding static time-translation symmetry. Both effects arise from metric-dependent propagation and observer measurements, but their calculation uses different symmetries.
 
-## 3. Weak Deflection of Light
+## Weak Deflection of Light
 
 For a ray passing a spherical mass with impact parameter $b\gg r_s$, general relativity predicts
 
@@ -49,7 +49,7 @@ Near $\phi=0$, setting $u=0$ shifts the incoming asymptote by $-r_s/b$. Near $\p
 
 </details>
 
-## 4. Images and the Einstein Radius
+## Images and the Einstein Radius
 
 A lens can redirect more than one ray from a source toward an observer, producing multiple images. In the small-angle **thin-lens approximation**, a point mass obeys
 
@@ -59,7 +59,7 @@ $\beta$ is the source's unlensed angular position, $\theta$ the image position, 
 
 Perfect alignment, $\beta=0$, produces an Einstein ring in the idealized point-lens model. Lensing preserves surface brightness in geometric optics but changes apparent solid angle, so it can magnify the received flux.
 
-## 5. Propagation Delay
+## Propagation Delay
 
 A gravitational field also changes travel times. Different lensed paths have different geometric lengths and gravitational delays. In the solar system, the **Shapiro delay** is an excess radar travel time relative to a specified weak-field reference calculation.
 

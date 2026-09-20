@@ -2,7 +2,7 @@
 
 A changing distribution of matter can produce traveling tidal disturbances. A passing disturbance changes the separation of freely falling test masses, which makes interferometers useful detectors. To calculate the effect, first approximate the metric near a flat background.
 
-## 1. Linearizing the Geometry
+## Linearizing the Geometry
 
 Write
 
@@ -39,7 +39,7 @@ For $k^\mu=(\omega/c,\mathbf k)$, the first condition is $\omega=c|\mathbf k|$. 
 
 </details>
 
-## 2. Two Physical Polarizations
+## Two Physical Polarizations
 
 For a vacuum plane wave traveling along $z$, we can use **transverse-traceless gauge**, or TT gauge. The physical spatial perturbation has the form
 
@@ -49,7 +49,7 @@ The plus polarization changes the transverse separations along $x$ and $y$ oppos
 
 Here $h_{ij}$ is the perturbation of a metric with background $g_{ij}=-\delta_{ij}$. The commonly drawn positive stretch convention can therefore have the opposite sign from our spatial metric perturbation. The measured magnitude is unaffected.
 
-## 3. An Interferometer Measurement
+## An Interferometer Measurement
 
 For nearby test masses initially at rest in TT coordinates, their coordinates stay fixed to first order while their proper separation changes. Along a short $x$ arm,
 
@@ -66,7 +66,7 @@ A real interferometer measures round-trip light phase, rather than one instantan
 
 </details>
 
-## 4. Producing Waves
+## Producing Waves
 
 Conservation removes leading monopole and dipole gravitational radiation from an isolated slowly moving source. The leading contribution depends on its changing **quadrupole moment**, the trace-free second moment of mass:
 

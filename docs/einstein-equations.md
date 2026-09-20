@@ -2,7 +2,7 @@
 
 A metric determines clock readings and free-fall paths, but we still need to calculate which metric a star or a distribution of matter produces. Einstein's equations connect spacetime curvature to the local energy, momentum, and stresses of matter.
 
-## 1. Matter as a Source
+## Matter as a Source
 
 The **stress–energy tensor** $T_{\mu\nu}$ describes energy density, momentum density, energy flux, and stress. In a local orthonormal rest frame, $T^{00}=\epsilon$ is energy per volume. Pressure contributes spatial stress, so gravity depends on more than rest mass.
 
@@ -12,7 +12,7 @@ $$T^{\mu\nu}=(\epsilon+p)\frac{u^\mu u^\nu}{c^2}-p\,g^{\mu\nu}.$$
 
 Here $p$ is pressure and $u^\mu u_\mu=c^2$. In its rest frame the diagonal components are $(\epsilon,p,p,p)$.
 
-## 2. A Curvature Equation
+## A Curvature Equation
 
 The Einstein tensor is
 
@@ -28,7 +28,7 @@ $G$ is Newton's constant. We define positive $\Lambda$ to produce accelerated de
 
 These equations are a dynamical model supported by experiment. Covariance and the equivalence principle motivate their structure but do not alone prove that nature must obey them.
 
-## 3. Constructing the Action
+## Constructing the Action
 
 An **action** assigns a number to a field configuration; physical configurations make its first variation vanish under the allowed variations. With $x^0=ct$, a compatible action is
 
@@ -49,7 +49,7 @@ The cosmological term contributes $-\sqrt{-g}\Lambda g_{\mu\nu}\delta g^{\mu\nu}
 
 </details>
 
-## 4. Recovering Newtonian Gravity
+## Recovering Newtonian Gravity
 
 For weak, slowly varying fields and nonrelativistic matter, set $\Lambda=0$ and $g_{00}\simeq1+2\Phi/c^2$. The trace-reversed equation is
 
@@ -57,7 +57,7 @@ $$R_{\mu\nu}=\frac{8\pi G}{c^4}\left(T_{\mu\nu}-\frac12g_{\mu\nu}T\right),\qquad
 
 Using $R_{00}\simeq\nabla^2\Phi/c^2$ and $T_{00}\simeq T\simeq\rho c^2$ gives $\nabla^2\Phi=4\pi G\rho$. This recovers Poisson's equation and fixes the coupling normalization.
 
-## 5. Conservation and Solutions
+## Conservation and Solutions
 
 $\nabla_\mu T^{\mu\nu}=0$ expresses local energy–momentum balance. It does not generally supply a single conserved total energy for an arbitrary expanding spacetime; global conserved quantities require suitable symmetries and boundary conditions.
 
