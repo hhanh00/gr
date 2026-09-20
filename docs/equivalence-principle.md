@@ -41,27 +41,18 @@ A freely falling coordinate system can remove the connection at one event. It ca
 
 Two particles dropped at slightly different positions above a spherical body move toward its center. Their separation changes even though both fall freely. This **tidal effect** depends on the variation of the gravitational field, and in general relativity on the Riemann tensor.
 
+<img src="./manim/tidal-convergence.png" alt="Tidal convergence: two particles dropped side by side would stay the same distance apart in a uniform field, but a spherical mass pulls both toward the same center, so they drift together as they fall." width="320" style="display:block;margin:0 auto" />
+
 The useful laboratory must be small in space and short in duration compared with the scales over which these effects become measurable. “Local” expresses this physical restriction; it does not imply that gravity disappears throughout an extended elevator.
 
-## 4. Clock Rates in a Weak Field
+## 4. Light Bending in a Lift
 
-An accelerating laboratory also connects free-fall physics with clock measurements. A light pulse sent upward toward a receiver a height $h$ above the emitter reaches it after roughly $h/c$. During that interval, a lab accelerating upward at $g$ changes velocity by $gh/c$.
+The lift also shows why gravity should bend light, if the beam crosses it sideways instead of climbing straight up. Send a pulse through a small hole in one wall while the lift accelerates upward through gravity-free space. Outside the lift, in flat space, the pulse travels in a straight line at a fixed height. But the lift keeps gaining speed during the crossing, so relative to the cabin the pulse arrives at the far wall lower than it entered, and its path inside the lift looks bent toward the floor.
 
-The receiver therefore measures a first-order Doppler redshift of approximately $gh/c^2$. By local equivalence, stationary clocks and light signals in a weak gravitational field exhibit the corresponding effect.
+Now hold a laboratory stationary in a real gravitational field instead. The Einstein equivalence principle says no local experiment can tell this laboratory apart from the accelerating one, since both give an accelerometer the same reading. So a beam of light passing a real gravitating mass should curve toward it too.
 
-With Newtonian potential $\Phi$, the weak static metric has
+![Light bending in a lift: a beam crossing sideways bends toward the floor, whether the lift accelerates through empty space or sits at rest above a planet.](./manim/light-bending-in-lift.png)
 
-$$g_{00}\simeq1+\frac{2\Phi}{c^2},\qquad d\tau\simeq\left(1+\frac{\Phi}{c^2}\right)dt.$$
+This equivalence-principle argument alone underestimates the bending, because it only accounts for how gravity dilates time and leaves out how it curves space. The full general-relativistic deflection, worked out in [Lensing and Redshift](lensing-and-redshift.md), comes out twice as large. Einstein's first estimate in 1911 relied on the equivalence principle alone and predicted the smaller value, and the doubled 1915 prediction is what the 1919 eclipse expedition set out to test.
 
-A supported clock higher in the potential records more proper time per unit of this coordinate time. For emission at $\Phi_e$ and reception at $\Phi_o$, stationary observers find
-
-$$\frac{\nu_o-\nu_e}{\nu_e}\simeq\frac{\Phi_e-\Phi_o}{c^2}.$$
-
-<details>
-<summary>Expanding the clock-rate factor</summary>
-
-For a stationary clock, $ds^2=g_{00}c^2dt^2=c^2d\tau^2$. Hence $d\tau/dt=\sqrt{1+2\Phi/c^2}$. Apply $\sqrt{1+\epsilon}=1+\epsilon/2+O(\epsilon^2)$ with $|\Phi|/c^2\ll1$.
-
-</details>
-
-The equivalence principle establishes how local free fall and clock measurements fit a metric description. [Tensors and Tensor Fields](tensors-and-tensor-fields.md) develops coordinate-independent notation. Chapter 9 later adds the dynamical law relating the metric to matter and energy.
+The lift shows how far free fall and local equivalence can reach on their own. They already predict that gravity bends light, without invoking a metric at all. [Tensors and Tensor Fields](tensors-and-tensor-fields.md) builds the notation needed to state this precisely, [Metric for a Gravitational Field](metric-for-a-gravitational-field.md) derives $g_{00}$ and the exact deflection formula, and [The Einstein Field Equations](einstein-equations.md) adds the dynamical law relating the metric to matter and energy.
