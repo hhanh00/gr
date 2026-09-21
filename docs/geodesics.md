@@ -18,6 +18,12 @@ $$\frac{DV^\mu}{d\lambda}=0.$$
 
 Its coordinate components need not be constant: the connection term accounts for the changing coordinate basis. Given an initial vector and a specified path, this equation determines the transported vector along the path.
 
+For an infinitesimal displacement, multiply the transport equation by $d\lambda$:
+
+$$dV^\mu=-\Gamma^\mu{}_{\alpha\beta}V^\beta\,dx^\alpha.$$
+
+This tells us exactly how to adjust the components at the next point. In normal coordinates at the starting point, the connection vanishes there and the components stay unchanged to first order. At the next point we can choose another normal frame and repeat. Parallel transport joins these local comparisons into a rule along the entire curve; it does not require a single Cartesian frame covering the path.
+
 Metric compatibility, $\nabla_\alpha g_{\mu\nu}=0$, means parallel transport preserves inner products. If $V$ and $W$ are both parallel transported, then
 
 $$\frac{d}{d\lambda}g(V,W)=g\left(\frac{DV}{d\lambda},W\right)+g\left(V,\frac{DW}{d\lambda}\right)=0.$$
@@ -25,6 +31,16 @@ $$\frac{d}{d\lambda}g(V,W)=g\left(\frac{DV}{d\lambda},W\right)+g\left(V,\frac{DW
 In curved geometry the result can depend on the path. Carrying a vector around a small closed loop can change its direction; curvature measures this failure to return unchanged. See [Tong, parallel transport](https://www.davidtong.org/teaching/general-relativity/grhtml/S3#S3.SS3) for the covariant formulation.
 
 ## Tangent Vectors and Geodesics
+
+![On a sphere, a great circle is a geodesic while a latitude circle requires steering within the surface.](./manim/geodesics-on-sphere.png)
+
+First consider a curve on a Riemannian surface, where arc length $\ell$ obeys $d\ell^2=g_{ab}dx^a dx^b$. Its unit tangent is
+
+$$t^a=\frac{dx^a}{d\ell},\qquad g_{ab}t^at^b=\frac{g_{ab}dx^a dx^b}{d\ell^2}=1.$$
+
+Imagine guiding a very small vehicle over the surface without steering to either side in its local tangent plane. Its direction can change when viewed from the surrounding three-dimensional space, because the surface bends. Intrinsically, however, it keeps heading straight ahead. The condition expressing this is $Dt^a/d\ell=0$.
+
+Substituting $t^a=dx^a/d\ell$ into the parallel-transport equation turns the derivative of the tangent into a second derivative of position. This gives the geodesic equation. The same construction works in spacetime, using an appropriate parameter in place of Riemannian arc length.
 
 A **geodesic** parallel transports its own tangent. With an affine parameter $\lambda$, its defining equation is
 
@@ -48,7 +64,37 @@ $$\frac{d^2x^\mu}{ds^2}+\Gamma^\mu{}_{\alpha\beta}\frac{dx^\alpha}{ds}\frac{dx^\
 
 where the tangent term reflects the parameter choice, not a force.
 
+### Reusing the Sphere Calculation
+
+In [Spacetime, under Curvature](spacetime.md#curvature), we already gave the sphere's connection coefficients and used them to calculate its curvature. For radius $a$ and **colatitude** $\theta$ measured from the north pole,
+
+$$d\ell^2=a^2(d\theta^2+\sin^2\theta\,d\phi^2),$$
+
+$$\Gamma^\theta{}_{\phi\phi}=-\sin\theta\cos\theta,\qquad
+\Gamma^\phi{}_{\theta\phi}=\Gamma^\phi{}_{\phi\theta}=\cot\theta.$$
+
+We can now use these results directly. With primes denoting $d/d\ell$, the geodesic equations are
+
+$$\theta''-\sin\theta\cos\theta\,(\phi')^2=0,\qquad
+\phi''+2\cot\theta\,\theta'\phi'=0.$$
+
+Along a meridian, $\phi=\phi_0$ and $\theta=\theta_0+\ell/a$ for motion toward increasing colatitude. Thus $\phi'=0$, $\theta'=1/a$, and both equations hold. Its unit tangent $(1/a,0)$ is parallel transported along the meridian. The polar coordinate chart fails at the poles, but the geodesic continues smoothly in another chart.
+
+A circle of constant colatitude behaves differently. With $\theta'=0$ and $\phi'\ne0$, the first equation requires $\sin\theta\cos\theta=0$. Away from the coordinate poles, this selects the equator, $\theta=\pi/2$. Other latitude circles require sideways steering. Rotating the sphere carries the equator into any great circle, so every great circle is a geodesic.
+
+The tangent to a great circle still turns in the surrounding Euclidean space. That change points normally to the sphere; its component within the tangent plane is zero. This is why a changing three-dimensional arrow can nevertheless have zero intrinsic covariant derivative along the curve.
+
+The book uses latitude $\vartheta=\pi/2-\theta$, giving $\cos^2\vartheta$ in the metric, $\Gamma^\vartheta{}_{\phi\phi}=\sin\vartheta\cos\vartheta$, and $\Gamma^\phi{}_{\vartheta\phi}=-\tan\vartheta$. These describe the same geometry in a different coordinate convention.
+
+### Straightest Paths and Extremal Length
+
+A Riemannian geodesic makes length stationary under small variations of the path with endpoints fixed. Sufficiently short segments minimize length, but a long geodesic need not be the shortest route: the longer great-circle arc between two non-antipodal points is also a geodesic.
+
+In spacetime the corresponding statement for a timelike geodesic concerns proper time. Sufficiently short timelike geodesic segments locally **maximize** elapsed proper time between fixed events. The parallel-transport definition remains useful in both geometries without assuming that every geodesic is a globally shortest path.
+
 ## Minkowski Space
+
+![Minkowski space with light cones, an inertial worldline, and hyperbolic coordinate curves.](./manim/minkowski-space.png)
 
 In inertial Cartesian coordinates $(ct,x,y,z)$, the metric is
 
@@ -59,6 +105,21 @@ All connection coefficients vanish, so affine geodesics are straight coordinate 
 $$x^\mu(\lambda)=b^\mu+v^\mu\lambda.$$
 
 A massive free particle has constant ordinary velocity; a light ray travels at $c$. Flatness, however, does not require the metric components to be constant in every coordinate system.
+
+The change from a positive-definite spatial metric to a Lorentzian metric changes how displacements are classified: $ds^2>0$ is timelike, $ds^2=0$ is null, and $ds^2<0$ is spacelike. The formulas for the connection and parallel transport keep their form. Flat spacetime means that locally we can find coordinates with the Minkowski metric, rather than the Euclidean identity matrix.
+
+### From Polar Coordinates to Hyperbolic Coordinates
+
+Ordinary polar coordinates on a plane use
+
+$$X=r\cos\theta,\qquad Y=r\sin\theta,\qquad X^2+Y^2=r^2.$$
+
+A fixed radius gives a circle. For a spacetime interval, the relative minus sign instead suggests $x^2-c^2t^2=\rho^2$: a hyperbola. The corresponding functions are
+
+$$\cosh\eta=\frac{e^\eta+e^{-\eta}}2,\qquad
+\sinh\eta=\frac{e^\eta-e^{-\eta}}2,$$
+
+which obey $\cosh^2\eta-\sinh^2\eta=1$. This identity plays the role that $\cos^2\theta+\sin^2\theta=1$ plays for a circle.
 
 To see this, introduce **hyperbolic coordinates** in the right wedge $x>|ct|$:
 
@@ -72,6 +133,19 @@ and hence
 
 $$ds^2=\rho^2d\eta^2-d\rho^2-dy^2-dz^2.$$
 
+<details>
+<summary>Transforming the interval explicitly</summary>
+
+Differentiate both coordinate relations:
+
+$$c\,dt=\sinh\eta\,d\rho+\rho\cosh\eta\,d\eta,$$
+
+$$dx=\cosh\eta\,d\rho+\rho\sinh\eta\,d\eta.$$
+
+When we subtract the squares, the cross terms cancel. The coefficient of $d\rho^2$ is $\sinh^2\eta-\cosh^2\eta=-1$, while that of $d\eta^2$ is $\rho^2(\cosh^2\eta-\sinh^2\eta)=\rho^2$. Thus $\rho$ is a spatial coordinate and $\eta$ is a time coordinate, although $\eta$ itself has no units of time.
+
+</details>
+
 These are Rindler coordinates. The nonzero connection coefficients are
 
 $$\Gamma^\rho{}_{\eta\eta}=\rho,\qquad \Gamma^\eta{}_{\rho\eta}=\Gamma^\eta{}_{\eta\rho}=\frac1\rho.$$
@@ -79,6 +153,8 @@ $$\Gamma^\rho{}_{\eta\eta}=\rho,\qquad \Gamma^\eta{}_{\rho\eta}=\Gamma^\eta{}_{\
 The spacetime is still flat: its Riemann tensor vanishes. Nonzero connection coefficients alone do not establish curvature.
 
 ## Uniform Acceleration
+
+![Uniform acceleration represented by a family of hyperbolic worldlines with different proper accelerations.](./manim/uniform-acceleration.png)
 
 Relativistic **uniform acceleration** means constant proper acceleration: the magnitude measured by an accelerometer. For motion along one spatial direction, introduce rapidity $\chi$ through
 
@@ -100,11 +176,33 @@ $$v(t)=\frac{\alpha t}{\sqrt{1+(\alpha t/c)^2}},\qquad \frac{dv}{dt}=\frac{\alph
 
 Although the accelerometer reading stays constant, coordinate acceleration decreases and the speed approaches $c$ without reaching it. The null boundaries $x=\pm ct$ delimit the Rindler wedge; the coordinate chart does not cover all of Minkowski spacetime.
 
+### A Whole Accelerating Reference Frame
+
+A single accelerated observer is not yet a reference frame occupying a region. To build one, assign an observer to each fixed $\rho$. At a common $\eta$, all these observers have the same instantaneous inertial velocity:
+
+$$v=\frac{dx}{dt}=c\tanh\eta.$$
+
+But common $\eta$ does not mean common inertial time $t$. The events lie along the straight line $ct=x\tanh\eta$. For two such events,
+
+$$c\,\Delta t=\tanh\eta\,\Delta x.$$
+
+A Lorentz transformation to the frame moving at $v=c\tanh\eta$ gives
+
+$$\Delta t'=\gamma\left(\Delta t-\frac{v\Delta x}{c^2}\right)=0.$$
+
+Thus a constant-$\eta$ slice is simultaneous in the observers' instantaneous rest frame. On that slice the metric gives $d\ell=d\rho$, so the proper separation of fixed-$\rho$ observers is always $|\rho_2-\rho_1|$. This is the sense in which the accelerating frame retains its shape.
+
+The price is $\alpha(\rho)=c^2/\rho$: observers nearer the Rindler horizon accelerate more strongly. Giving every observer the same acceleration history at the same inertial times would preserve their inertial-coordinate separation, but would not preserve the distances measured in their successive rest frames. Relativity of simultaneity matters when accelerating an extended laboratory.
+
 ## Uniform Gravitational Field
+
+![A uniformly accelerating laboratory and the equivalent local uniform gravitational field.](./manim/uniform-gravitational-field.png)
 
 To describe an accelerating laboratory, choose a reference acceleration $g>0$ and define
 
 $$\rho=\frac{c^2}{g}+z,\qquad \eta=\frac{gT}{c}.$$
+
+The length $R=c^2/g$ locates the reference hyperbola, so $z=\rho-R$ measures height relative to it. For $g\simeq9.8\,\mathrm{m\,s^{-2}}$, $R\simeq9.2\times10^{15}\,\mathrm m$, roughly one light-year. An ordinary laboratory is tiny compared with this scale, which explains why its variation in proper acceleration is negligible. This $R$ is a scale of the accelerating coordinate system, not the distance to a gravitating source.
 
 Here $z$ replaces the longitudinal coordinate $\rho$; call the two transverse coordinates $X,Y$. The metric becomes
 
@@ -122,6 +220,12 @@ $$ds^2\simeq\left(1+\frac{2gz}{c^2}\right)c^2dT^2-dz^2-dX^2-dY^2.$$
 
 Comparing with $g_{00}\simeq1+2\Phi/c^2$ identifies the Newtonian potential $\Phi=gz$ and downward acceleration $-g$. This is the sense in which the laboratory simulates a uniform gravitational field.
 
+The approximation drops the quadratic term in
+
+$$N^2=1+\frac{2gz}{c^2}+\frac{g^2z^2}{c^4}.$$
+
+This is sufficient for the leading Newtonian motion. For an exact curvature calculation, use the full metric: treating the truncated expression as exact can introduce spurious curvature at the discarded order.
+
 The exact Rindler metric remains flat. It describes the apparent field of accelerated observers, while a real gravitating body generally also produces tidal curvature. The [equivalence principle](equivalence-principle.md) relates the two descriptions locally; it does not remove those tidal effects over an extended region.
 
 ## Motion of a Particle
@@ -136,11 +240,38 @@ For vertical free fall in the Rindler metric, use coordinates $(T,z)$ and let do
 
 $$\Gamma^z{}_{TT}=gN,\qquad \Gamma^T{}_{Tz}=\Gamma^T{}_{zT}=\frac{g}{c^2N}.$$
 
+<details>
+<summary>Obtaining the connection from the laboratory metric</summary>
+
+Because the time coordinate here is $T$, not $cT$, the metric components are $g_{TT}=c^2N^2$ and $g_{zz}=-1$. The inverse components are $g^{TT}=1/(c^2N^2)$ and $g^{zz}=-1$. There are no mixed components or time derivatives, and $N'=g/c^2$. The Christoffel formula therefore reduces to
+
+$$\Gamma^z{}_{TT}=-\frac12g^{zz}\partial_zg_{TT}
+=\frac12\partial_z(c^2N^2)=gN,$$
+
+$$\Gamma^T{}_{Tz}=\frac12g^{TT}\partial_zg_{TT}
+=\frac{N'}N=\frac{g}{c^2N}.$$
+
+The symmetry of the lower indices supplies $\Gamma^T{}_{zT}$; the remaining coefficients in the vertical problem vanish.
+
+</details>
+
 The geodesic equations and four-velocity normalization become
 
 $$\ddot z+gN\dot T^2=0,\qquad \ddot T+\frac{2g}{c^2N}\dot T\dot z=0,$$
 
 $$N^2c^2\dot T^2-\dot z^2=c^2.$$
+
+To recover the Newtonian result directly, take $|gz|/c^2\ll1$ and $|dz/dT|\ll c$. The clock relation is
+
+$$\frac{d\tau}{dT}=\sqrt{N^2-\frac1{c^2}\left(\frac{dz}{dT}\right)^2}\simeq1.$$
+
+Consequently $\dot T\simeq1$ and the spatial geodesic equation reduces, at leading order, to
+
+$$\frac{d^2z}{dT^2}\simeq-g.$$
+
+More generally, a weak static metric with $g_{TT}\simeq c^2+2\Phi$ and approximately Cartesian spatial components has $\Gamma^i{}_{TT}\simeq\partial_i\Phi$. Slow geodesic motion then gives $d^2x^i/dT^2\simeq-\partial_i\Phi$. The Newtonian force law emerges from the metric's time component.
+
+The nonzero second derivative here is coordinate acceleration. Proper acceleration includes the connection term and remains zero throughout free fall.
 
 The time equation integrates to $N^2\dot T=\mathcal E$, a constant associated with time-translation symmetry. Substituting it into the normalization gives a first-order equation:
 
@@ -164,3 +295,5 @@ For release at $z_0=0$ and $|gT|/c\ll1$, expansion gives $z(T)\simeq-\tfrac12gT^
 </details>
 
 The same method applies when curvature is present: determine the metric, compute its connection, and solve the geodesic equation with the appropriate initial conditions. [Metric for a Gravitational Field](metric-for-a-gravitational-field.md) develops the weak-field and Schwarzschild geometries used for those calculations.
+
+Further reading: Leonard Susskind and André Cabannes, *General Relativity: The Theoretical Minimum*, Lecture 4, “Geodesics and Gravity,” pp. 121–164. The discussion above retains these notes’ $(+,-,-,-)$ signature and explicit factors of $c$.

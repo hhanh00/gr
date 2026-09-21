@@ -10,6 +10,30 @@ const manim = path.join(root, '.manim-venv', 'bin', 'manim')
 
 const diagrams = [
   {
+    source: 'geodesics_frames.py',
+    scene: 'GeodesicsOnSphere',
+    output: 'geodesics-on-sphere.png',
+    page: 'geodesics',
+  },
+  {
+    source: 'geodesics_frames.py',
+    scene: 'MinkowskiSpace',
+    output: 'minkowski-space.png',
+    page: 'geodesics',
+  },
+  {
+    source: 'geodesics_frames.py',
+    scene: 'UniformAcceleration',
+    output: 'uniform-acceleration.png',
+    page: 'geodesics',
+  },
+  {
+    source: 'geodesics_frames.py',
+    scene: 'UniformGravitationalField',
+    output: 'uniform-gravitational-field.png',
+    page: 'geodesics',
+  },
+  {
     source: 'tidal_convergence.py',
     scene: 'TidalConvergence',
     output: 'tidal-convergence.png',
