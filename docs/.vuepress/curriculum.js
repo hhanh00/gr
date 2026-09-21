@@ -18,16 +18,10 @@ export const groups = [
         "link": "/tensors-and-tensor-fields.html"
       },
       {
-        "title": "Riemannian Spaces and the Metric Tensor",
-        "desc": "Curved spaces, local geometry, and invariant measurements.",
-        "symbol": "ds²",
-        "link": "/riemannian-spaces-and-metric-tensor.html"
-      },
-      {
         "title": "Spacetime",
-        "desc": "",
+        "desc": "Special relativity, the metric, connections, and curvature.",
         "symbol": "R",
-        "link": "/curvature.html"
+        "link": "/spacetime.html"
       }
     ]
   },
@@ -90,10 +84,10 @@ export const groups = [
     "soft": "#fef3c7",
     "items": [
       {
-        "title": "Spacetime",
-        "desc": "Events, intervals, light cones, and proper time.",
-        "symbol": "xμ",
-        "link": "/spacetime.html"
+        "title": "Riemannian Spaces and the Metric Tensor",
+        "desc": "Curved spaces, local geometry, and invariant measurements.",
+        "symbol": "ds²",
+        "link": "/riemannian-spaces-and-metric-tensor.html"
       },
       {
         "title": "Curves and Motion",

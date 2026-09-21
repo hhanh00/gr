@@ -69,6 +69,24 @@ const diagrams = [
     output: 'covariant-measuring-tape.png',
     page: 'tensors-and-tensor-fields',
   },
+  {
+    source: 'product_rule_decomposition.py',
+    scene: 'ProductRuleDecomposition',
+    output: 'product-rule-decomposition.png',
+    page: 'spacetime',
+  },
+  {
+    source: 'connection_indices.py',
+    scene: 'ConnectionIndices',
+    output: 'connection-indices.png',
+    page: 'spacetime',
+  },
+  {
+    source: 'connection_indices_3d.py',
+    scene: 'ConnectionIndices3D',
+    output: 'connection-indices-3d.png',
+    page: 'spacetime',
+  },
 ]
 
 const args = process.argv.slice(2)

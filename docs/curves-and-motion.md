@@ -30,7 +30,7 @@ In curved spacetime or curvilinear coordinates, replace the ordinary derivative 
 
 $$a^\mu=\frac{Du^\mu}{d\tau}=\frac{du^\mu}{d\tau}+\Gamma^\mu{}_{\alpha\beta}u^\alpha u^\beta.$$
 
-The connection coefficients $\Gamma^\mu{}_{\alpha\beta}$ correct for changes in the basis. We derive them in [Connections and curvature](curvature.md).
+The connection coefficients $\Gamma^\mu{}_{\alpha\beta}$ correct for changes in the basis. We derive them in [Spacetime](spacetime.md).
 
 ## Coordinate Acceleration in Flat Space
 

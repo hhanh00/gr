@@ -69,4 +69,4 @@ $$dV_4=\sqrt{-g}\,d^4x.$$
 
 The minus sign reflects our Lorentzian signature in four dimensions. In flat spherical coordinates, $\sqrt{-g}=r^2\sin\theta$ with $x^0=ct$. Integrating only $d^4x$ would omit the spherical-coordinate volume factor.
 
-The metric now supplies inner products, clock readings, null directions, and volume. [Connections and curvature](curvature.md) uses its derivatives to compare vectors at different events and measure tidal geometry.
+The metric now supplies inner products, clock readings, null directions, and volume. [Spacetime](spacetime.md) uses its derivatives to compare vectors at different events and measure tidal geometry.

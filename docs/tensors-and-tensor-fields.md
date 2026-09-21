@@ -58,7 +58,7 @@ Calculus begins locally. A small segment of a smooth curve is approximated by it
 
 Different ingredients answer different questions. A **smooth manifold** lets us use coordinates and calculus locally. A **metric** supplies lengths and inner products. A **connection** lets us differentiate vector fields and compare directions along a path. Curvature then describes, among other things, how transporting a direction around a loop can change it.
 
-We will first develop the objects defined at a single point. Comparing objects at different points comes later in [Curvature](curvature.md).
+We will first develop the objects defined at a single point. Comparing objects at different points comes later in [Spacetime](spacetime.md).
 
 ## Why Study Differential Geometry in General Relativity?
 

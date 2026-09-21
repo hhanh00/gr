@@ -20,7 +20,7 @@ $$G_{\mu\nu}=R_{\mu\nu}-\frac12g_{\mu\nu}R.$$
 
 Its covariant divergence vanishes by the contracted Bianchi identity. This makes it compatible with the matter equation $\nabla_\mu T^{\mu\nu}=0$.
 
-With our $(+,-,-,-)$ signature and the [curvature convention](curvature.md) already defined, write the field equations as
+With our $(+,-,-,-)$ signature and the [curvature convention](spacetime.md) already defined, write the field equations as
 
 $$G_{\mu\nu}-\Lambda g_{\mu\nu}=\frac{8\pi G}{c^4}T_{\mu\nu}.$$
 
