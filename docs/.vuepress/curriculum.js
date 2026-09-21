@@ -24,8 +24,8 @@ export const groups = [
         "link": "/riemannian-spaces-and-metric-tensor.html"
       },
       {
-        "title": "Curvature",
-        "desc": "Connections, parallel transport, and tidal curvature.",
+        "title": "Spacetime",
+        "desc": "",
         "symbol": "R",
         "link": "/curvature.html"
       }
