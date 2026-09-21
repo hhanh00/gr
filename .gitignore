@@ -4,3 +4,8 @@ docs/.vuepress/.cache/
 docs/.vuepress/.temp/
 .manim-media-*/
 docs/manim/media/
+
+# Local and generated files
+.DS_Store
+__pycache__/
+*.py[cod]
