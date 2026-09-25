@@ -9,3 +9,7 @@ docs/manim/media/
 .DS_Store
 __pycache__/
 *.py[cod]
+
+# Local reading material
+dokumen.pub_*.epub
+*-toc.md

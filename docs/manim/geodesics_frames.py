@@ -66,6 +66,47 @@ class UniformAcceleration(Scene):
         self.add(axes, xlab, tlab, curves, simult, labels, accel, title)
 
 
+class AcceleratingReferenceFrame(Scene):
+    """A Rindler congruence: constant-eta slices tilt toward the light cone."""
+    def construct(self):
+        self.camera.background_color = WHITE
+        axes = Axes(
+            x_range=[0, 5.8, 1], y_range=[-2.8, 2.8, 1],
+            x_length=8.0, y_length=4.5,
+            axis_config={"color": INK, "stroke_width": 2}, tips=False,
+        ).shift(DOWN * 0.15)
+        xlab = MathTex("x", color=INK).next_to(axes.x_axis, RIGHT)
+        tlab = MathTex("ct", color=INK).next_to(axes.y_axis, UP)
+        rhos = [0.8, 1.45, 2.1, 2.75, 3.4]
+        curves = VGroup(*[
+            ParametricFunction(
+                lambda q, r=r: axes.c2p(r * np.cosh(q), r * np.sinh(q)),
+                t_range=[-0.82, 0.82], color=BLUE, stroke_width=4,
+            ) for r in rhos
+        ])
+        rholab = MathTex("\\rho=\\text{const}", color=BLUE, font_size=26)
+        rholab.move_to(axes.c2p(3.62, 1.05))
+        horizon = DashedLine(axes.c2p(0, 0), axes.c2p(2.72, 2.72), color=GRAY, stroke_width=4)
+        hzlab = Text("Rindler horizon", font_size=19, color=GRAY)
+        hzlab.rotate(45 * DEGREES).move_to(axes.c2p(0.62, 1.9))
+        slice_zero = Line(axes.c2p(0, 0), axes.c2p(5.6, 0), color=INK, stroke_width=5)
+        zlab = MathTex("\\eta=0", color=INK, font_size=28).move_to(axes.c2p(5.35, 0.22))
+        eta_mid, eta_high = 0.45, 0.85
+        slice_mid = DashedLine(axes.c2p(0, 0), axes.c2p(5.6, 5.6 * np.tanh(eta_mid)), color=RED, stroke_width=3)
+        slice_high = DashedLine(axes.c2p(0, 0), axes.c2p(3.95, 3.95 * np.tanh(eta_high)), color=RED, stroke_width=3)
+        dots = VGroup(*[
+            Dot(axes.c2p(r * np.cosh(eta_mid), r * np.sinh(eta_mid)), color=BLUE, radius=0.07)
+            for r in rhos if r * np.cosh(eta_mid) < 5.5
+        ])
+        mlab = MathTex("\\eta>0", color=RED, font_size=28).move_to(axes.c2p(5.45, 2.52))
+        hlab = MathTex("\\eta\\to\\infty", color=RED, font_size=28).move_to(axes.c2p(2.45, 2.28))
+        title = Text("An accelerating reference frame", font_size=32, color=INK).to_edge(UP, buff=0.55)
+        caption = Text("observers ride the hyperbolas; each instant (dots) is a tilted slice, never past the horizon",
+                       font_size=19, color=INK).to_edge(DOWN, buff=0.25)
+        self.add(axes, xlab, tlab, curves, rholab, horizon, hzlab,
+                 slice_zero, zlab, slice_mid, slice_high, dots, mlab, hlab, title, caption)
+
+
 class UniformGravitationalField(Scene):
     """Local accelerating-laboratory picture of a uniform gravitational field."""
     def construct(self):

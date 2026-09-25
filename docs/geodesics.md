@@ -160,6 +160,21 @@ Relativistic **uniform acceleration** means constant proper acceleration: the ma
 
 $$u^\mu=(c\cosh\chi,c\sinh\chi,0,0),\qquad v=c\tanh\chi.$$
 
+This parametrization assumes nothing: since $g(u,u)=c^2$, every four-velocity can be written with hyperbolic functions, just as every Euclidean unit vector can be written $(\cos\theta,\sin\theta)$. The parameter
+
+$$\chi=\operatorname{artanh}\frac{v}{c}=\frac12\ln\frac{1+v/c}{1-v/c}$$
+
+is the **rapidity**. It is the relativistic replacement for velocity. A boost along a fixed direction acts on the $(ct,x)$ plane as a hyperbolic rotation:
+
+| Euclidean rotation | Lorentz boost |
+| --- | --- |
+| Unit vector $(\cos\theta,\sin\theta)$ | Four-velocity $(c\cosh\chi,c\sinh\chi)$ |
+| $\cos^2\theta+\sin^2\theta=1$ | $\cosh^2\chi-\sinh^2\chi=1$ |
+| Slope $\tan\theta$ | Velocity ratio $v/c=\tanh\chi$ |
+| Rotations compose by adding angles: $\theta_1+\theta_2$ | Boosts compose by adding rapidities: $\chi_1+\chi_2$ |
+
+Indeed, the velocity-composition law $(v_1+v_2)/(1+v_1v_2/c^2)$ is simply $\tanh(\chi_1+\chi_2)$. Rapidity is unbounded while $v=c\tanh\chi$ saturates below $c$. Newtonian mechanics favors velocity: a constant force makes it grow linearly forever. Special relativity keeps that statement by replacing velocity with the one quantity that still grows linearly under constant proper acceleration, $\chi=\alpha\tau/c$, without ever forcing $v$ past $c$. For everyday speeds, $\tanh\chi\simeq\chi$, so rapidity reduces to $v/c$; this is why it goes unnoticed outside relativity.
+
 Differentiating with respect to proper time gives
 
 $$\alpha=\sqrt{-a_\mu a^\mu}=c\left|\frac{d\chi}{d\tau}\right|.$$
@@ -178,21 +193,27 @@ Although the accelerometer reading stays constant, coordinate acceleration decre
 
 ### A Whole Accelerating Reference Frame
 
-A single accelerated observer is not yet a reference frame occupying a region. To build one, assign an observer to each fixed $\rho$. At a common $\eta$, all these observers have the same instantaneous inertial velocity:
+![Observers ride fixed-rho Rindler hyperbolas; each instant of the frame is a slice through the origin that tilts toward the horizon.](./manim/accelerating-reference-frame.png)
 
-$$v=\frac{dx}{dt}=c\tanh\eta.$$
+A single accelerated observer is not yet a reference frame occupying a region. To build one, assign an observer to each fixed $\rho$, the Rindler hyperbolas $x^2-c^2t^2=\rho^2$ introduced above, and let the parameter $\eta$ play the role of time for the whole family. At a common $\eta$, every observer sits at $(ct,x)=(\rho\sinh\eta,\rho\cosh\eta)$ and has the same instantaneous inertial velocity:
 
-But common $\eta$ does not mean common inertial time $t$. The events lie along the straight line $ct=x\tanh\eta$. For two such events,
+$$v=\frac{dx}{dt}=c\tanh\eta,$$
 
-$$c\,\Delta t=\tanh\eta\,\Delta x.$$
+independent of $\rho$. The frame moves as a unit, like a rod caught in a sequence of snapshots.
 
-A Lorentz transformation to the frame moving at $v=c\tanh\eta$ gives
+Which events count as "the same instant"? At $\eta=0$ the answer is the familiar one: all observers are momentarily at rest, and the slice of simultaneous events is the positive $x$-axis. At later $\eta$ the slice tilts. Common $\eta$ does not mean common inertial time $t$: the events lie along the ray $ct=x\tanh\eta$, so for two of them
+
+$$c\,\Delta t=\tanh\eta\,\Delta x\neq0,$$
+
+and they are not simultaneous in the inertial frame. A Lorentz transformation to the frame moving at $v=c\tanh\eta$ gives
 
 $$\Delta t'=\gamma\left(\Delta t-\frac{v\Delta x}{c^2}\right)=0.$$
 
-Thus a constant-$\eta$ slice is simultaneous in the observers' instantaneous rest frame. On that slice the metric gives $d\ell=d\rho$, so the proper separation of fixed-$\rho$ observers is always $|\rho_2-\rho_1|$. This is the sense in which the accelerating frame retains its shape.
+The tilted ray is exactly the simultaneity line of the instantaneous rest frame. There is a geometric reason: the hyperbolas are centered at the origin, and in Minkowski geometry the ray from the center is the direction perpendicular to each observer's tangent there — the analogue of the radius to a circle being perpendicular to the tangent. As $\eta$ grows, the whole slice performs a hyperbolic rotation, tilting ever closer to the null line $x=ct$. The limit is real: however long the frame accelerates, its space axis approaches the horizon without reaching it; an $\eta=\infty$ slice would lie on the light cone itself.
 
-The price is $\alpha(\rho)=c^2/\rho$: observers nearer the Rindler horizon accelerate more strongly. Giving every observer the same acceleration history at the same inertial times would preserve their inertial-coordinate separation, but would not preserve the distances measured in their successive rest frames. Relativity of simultaneity matters when accelerating an extended laboratory.
+On each slice the metric gives $d\ell=d\rho$, so the proper separation of fixed-$\rho$ observers is $|\rho_2-\rho_1|$ at every $\eta$. Each observer therefore finds all the others at unchanging distances: the frame retains its shape, and a rope laid along it develops no additional strain. This is Born rigidity.
+
+The price is $\alpha(\rho)=c^2/\rho$: observers nearer the Rindler horizon accelerate more strongly, and clocks at larger $\rho$ tick faster, $d\tau=\rho\,d\eta/c$. The alternative — giving every observer the same acceleration at the same inertial times — would preserve their inertial-coordinate separation, as Galilean intuition expects, but the distances measured on the observers' successive rest frames would drift apart, straining and finally snapping a string laid between them (Bell's spaceship paradox). In relativity, rigidity is not a kinematic identity but a dynamical achievement: the frame keeps its shape only because its rear accelerates harder than its front. Relativity of simultaneity matters when accelerating an extended laboratory.
 
 ## Uniform Gravitational Field
 
@@ -202,7 +223,7 @@ To describe an accelerating laboratory, choose a reference acceleration $g>0$ an
 
 $$\rho=\frac{c^2}{g}+z,\qquad \eta=\frac{gT}{c}.$$
 
-The length $R=c^2/g$ locates the reference hyperbola, so $z=\rho-R$ measures height relative to it. For $g\simeq9.8\,\mathrm{m\,s^{-2}}$, $R\simeq9.2\times10^{15}\,\mathrm m$, roughly one light-year. An ordinary laboratory is tiny compared with this scale, which explains why its variation in proper acceleration is negligible. This $R$ is a scale of the accelerating coordinate system, not the distance to a gravitating source.
+The length $R=c^2/g$ locates the reference hyperbola, so $z=\rho-R$ measures height relative to it. For $g\simeq9.8\,\mathrm{m\,s^{-2}}$, $R\simeq9.2\times10^{15}\,\mathrm m$, roughly one light-year: at 1g, rapidity grows by one in about a year of proper time, and $R$ is how far light travels in that time. An ordinary laboratory is tiny compared with this scale, which explains why its variation in proper acceleration is negligible. The Rindler horizon sits at $z=-R$, a light-year below the floor. A right-moving light ray keeps $x-ct$ constant, while an observer at height $z$ has $x-ct=(R+z)\,e^{-gT/c}>0$: signals sent from below that height can never catch the laboratory, and those sent just above it arrive ever later and ever more redshifted as $z\to-R$. This $R$ is a scale of the accelerating coordinate system, not the distance to a gravitating source.
 
 Here $z$ replaces the longitudinal coordinate $\rho$; call the two transverse coordinates $X,Y$. The metric becomes
 

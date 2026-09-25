@@ -29,6 +29,12 @@ const diagrams = [
   },
   {
     source: 'geodesics_frames.py',
+    scene: 'AcceleratingReferenceFrame',
+    output: 'accelerating-reference-frame.png',
+    page: 'geodesics',
+  },
+  {
+    source: 'geodesics_frames.py',
     scene: 'UniformGravitationalField',
     output: 'uniform-gravitational-field.png',
     page: 'geodesics',
